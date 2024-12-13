@@ -8,9 +8,11 @@ import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -28,6 +30,7 @@ public class App extends Application {
             StackPane root = (StackPane) FXMLLoader.load(getClass().getResource(Configs.SPLASH_SCREEN_PATH));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+//            centerStage(primaryStage);
             primaryStage.show();
 
             // Load splash screen with fade in effect
@@ -64,6 +67,11 @@ public class App extends Application {
         }
     }
 
+//    private void centerStage(Stage stage) {
+//        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds(); // Get screen dimensions
+//        stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);      // Center horizontally
+//        stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);   // Center vertically
+//    }
     public static void main(String[] args) {
         launch(args);
     }

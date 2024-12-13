@@ -49,7 +49,7 @@ public class Configs {
 	public static final String CART_SCREEN_PATH = "fxml/cart.fxml";
 	public static final String SHIPPING_SCREEN_PATH = "fxml/shipping.fxml";
 	public static final String CART_MEDIA_PATH = "fxml/media_cart.fxml";
-	public static final String HOME_PATH  = "fxml/home.fxml";
+	public static final String HOME_PATH  = "fxml/home2.fxml";
 	public static final String HOME_MEDIA_PATH = "fxml/media_home.fxml";
 	public static final String POPUP_PATH = "fxml/popup.fxml";
 
