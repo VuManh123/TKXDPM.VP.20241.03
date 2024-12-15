@@ -13,6 +13,9 @@ public class BaseForm extends FXMLForm {
 	private Scene scene;
 	private BaseForm prev;
 	protected final Stage stage;
+	public Stage getStage() {
+		return stage;
+	}
 	protected HomeForm homeScreenHandler;
 	protected Hashtable<String, String> messages;
 	private BaseController bController;

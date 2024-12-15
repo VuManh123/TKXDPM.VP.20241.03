@@ -15,4 +15,5 @@ module isd.aims.main {
 
     exports isd.aims.main;
     exports isd.aims.main.views;
+    opens isd.aims.main.views.mediadetail to javafx.fxml;
 }
