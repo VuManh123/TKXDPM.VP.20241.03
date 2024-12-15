@@ -45,13 +45,14 @@ public class Configs {
 	public static final String INVOICE_MEDIA_SCREEN_PATH = "fxml/media_invoice.fxml";
 	public static final String PAYMENT_SCREEN_PATH = "fxml/payment.fxml";
 	public static final String RESULT_SCREEN_PATH = "fxml/result.fxml";
-	public static final String SPLASH_SCREEN_PATH = "fxml/splash.fxml";
+	public static final String SPLASH_SCREEN_PATH = "fxml/splash_2.fxml";
 	public static final String CART_SCREEN_PATH = "fxml/cart.fxml";
 	public static final String SHIPPING_SCREEN_PATH = "fxml/shipping.fxml";
 	public static final String CART_MEDIA_PATH = "fxml/media_cart.fxml";
-	public static final String HOME_PATH  = "fxml/home.fxml";
-	public static final String HOME_MEDIA_PATH = "fxml/media_home.fxml";
+	public static final String HOME_PATH  = "fxml/home_2.fxml";
+	public static final String HOME_MEDIA_PATH = "fxml/media_home_2.fxml";
 	public static final String POPUP_PATH = "fxml/popup.fxml";
+	public static final String MEDIA_DETAIL_PATH = "fxml/media_detail.fxml";
 
 	public static Font REGULAR_FONT = Font.font("Segoe UI", FontWeight.NORMAL, FontPosture.REGULAR, 24);
 
