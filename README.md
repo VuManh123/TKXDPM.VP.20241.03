@@ -6,5 +6,6 @@
 5. Phan Huy Hiệp - 20210328 - Xử lý logic
 
 # Use Case
+![Usecase tổng quan](https://github.com/user-attachments/assets/3a4dc24b-a364-4c1b-9fb7-d7a2160bac23)
 
 # Hướng dẫn chạy code
