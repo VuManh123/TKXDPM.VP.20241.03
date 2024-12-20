@@ -67,8 +67,16 @@
             </HBox>
             <HBox layoutY="60.0" prefHeight="560.0" prefWidth="1080.0">
                <children>
-                  <ScrollPane prefHeight="560.0" prefWidth="400.0" />
-                  <ScrollPane prefHeight="560.0" prefWidth="680.0" />
+                  <ScrollPane prefHeight="560.0" prefWidth="400.0">
+                     <content>
+                        <VBox fx:id="listOrder" prefHeight="555.0" prefWidth="384.0" />
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane prefHeight="560.0" prefWidth="680.0">
+                     <content>
+                        <VBox fx:id="orderDetail" prefHeight="555.0" prefWidth="663.0" />
+                     </content>
+                  </ScrollPane>
                </children>
             </HBox>
          </children>
