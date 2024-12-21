@@ -14,14 +14,11 @@ import javafx.util.Duration;
 
 
 public class PopupForm extends BaseForm {
-
-
     @FXML
     ImageView tickicon;
 
     @FXML
     Label message;
-
 
     public PopupForm(Stage stage) throws IOException{
         super(stage, Configs.POPUP_PATH);

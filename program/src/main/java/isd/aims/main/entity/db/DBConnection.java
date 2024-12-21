@@ -16,7 +16,16 @@ public class DBConnection {
         if (connect != null) return connect;
 
         try {
-            connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/aims","root","motconvit123");
+//            String url = "jdbc:mysql://localhost:3306/aims";
+//            String username = "root";
+//            String password = "";
+
+            // DB cua hung
+            String url = "jdbc:mysql://localhost:3306/aims";
+            String username = "root";
+            String password = "";
+
+            connect = DriverManager.getConnection(url,username,password);
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from cd");
             while (resultSet.next()){
