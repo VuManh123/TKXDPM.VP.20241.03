@@ -17,11 +17,6 @@ public class DBConnection {
 
         try {
             connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/aims","root","motconvit123");
-            Statement statement = connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from cd");
-            while (resultSet.next()){
-                System.out.println("Yes");
-            }
             return connect;
         } catch (Exception e) {
             LOGGER.info(e.getMessage());
