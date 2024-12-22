@@ -85,6 +85,25 @@ public class Media {
         return medium;
     }
 
+    public List<Media> getSearchMedia(String keyword) throws SQLException {
+        String sql = "SELECT * FROM Media WHERE title LIKE '%" + keyword + "%'";
+        Statement stm = DBConnection.getConnection().createStatement();
+        ResultSet res = stm.executeQuery(sql);
+        List<Media> medium = new ArrayList<>();
+        while (res.next()) {
+            Media media = new Media()
+                    .setId(res.getInt("id"))
+                    .setTitle(res.getString("title"))
+                    .setQuantity(res.getInt("quantity"))
+                    .setCategory(res.getString("category"))
+                    .setMediaURL(res.getString("imageUrl"))
+                    .setPrice(res.getInt("price"))
+                    .setType(res.getString("type"));
+            medium.add(media);
+        }
+        return medium;
+    }
+
     public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
         Statement stm = DBConnection.getConnection().createStatement();
         if (value instanceof String){
