@@ -4,44 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0f20632-74b4-4c2f-8164-ada7716c9892" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ae1a7400-442f-4812-b7ed-b3a6bd827e7a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/db/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/db/DBConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-        <option value="FxmlFile" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="2eHBP9Hj6CPPkQUGAMePZrAnBnq" />
+        &quot;customColor&quot;: &quot;&quot;,
+        &quot;associatedIndex&quot;: 8
+        }</component>
+  <component name="ProjectId" id="2qAVjKapqldQihwSzSDAxl4gJTs" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -49,150 +30,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_directory_selection": "C:/Project/TKXDPM.VP.20241.03/program/src/main/java",
-    "last_opened_file_path": "D:/3.Semesters/Semester_2024.1/T5_Sofware_Design/Review/ISD.ICT.20232.03-main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;DangTranNamKhanh/master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\2024_1\TA\AIMS\src\main\resources\isd\aims\main\assets\db" />
-      <recent name="$PROJECT_DIR$/src/main/java/isd/aims/main/common/exception" />
-      <recent name="$PROJECT_DIR$/src/main/java/isd/aims/main/subsystem" />
-      <recent name="$PROJECT_DIR$/src/main/java/isd/aims/main" />
-      <recent name="$PROJECT_DIR$/src/main" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Project\TKXDPM.VP.20241.03\program\src\main\resources\isd\aims\main\fxml" />
-      <recent name="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml" />
-      <recent name="$PROJECT_DIR$/src/main/resources/isd/aims/main" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src/main/java/isd/aims/main" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="isd.aims.main" />
-      <recent name="" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="isd.aims.main.controller" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="isd.aims.main.App" />
-      <module name="main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="isd.aims.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DBConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="isd.aims.main.entity.db.DBConnection" />
-      <module name="main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="isd.aims.main.entity.db.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="isd.aims.main.HelloApplication" />
-      <module name="main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="isd.aims.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JUnit5ExampleTest.justAnExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="main" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="JUnit5ExampleTest" />
-      <option name="METHOD_NAME" value="justAnExample" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+}</component>
+  <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
-      <module name="AIMS" />
+      <module name="main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="AIMS" />
+      <module name="main" />
       <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.App" />
-        <item itemvalue="Application.DBConnection" />
-        <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="JUnit.JUnit5ExampleTest.justAnExample" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e0f20632-74b4-4c2f-8164-ada7716c9892" name="Changes" comment="" />
-      <created>1711551598406</created>
+      <changelist id="ae1a7400-442f-4812-b7ed-b3a6bd827e7a" name="Changes" comment="" />
+      <created>1734105502732</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1711551598406</updated>
-      <workItem from="1711551599615" duration="86000" />
-      <workItem from="1711565587574" duration="884000" />
-      <workItem from="1711566476068" duration="5634000" />
-      <workItem from="1711606179284" duration="3009000" />
-      <workItem from="1711610127046" duration="7132000" />
-      <workItem from="1711704117227" duration="331000" />
-      <workItem from="1711705542704" duration="92000" />
-      <workItem from="1711705655102" duration="192000" />
-      <workItem from="1711708662643" duration="151000" />
-      <workItem from="1711708827461" duration="827000" />
-      <workItem from="1711709659461" duration="28000" />
-      <workItem from="1711709697581" duration="246000" />
-      <workItem from="1714721010325" duration="2124000" />
-      <workItem from="1734105525959" duration="31496000" />
-      <workItem from="1734251555668" duration="15000" />
-      <workItem from="1734687098583" duration="9477000" />
-      <workItem from="1734922972907" duration="3764000" />
+      <updated>1734105502732</updated>
+      <workItem from="1734105506756" duration="17000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
 </project>
