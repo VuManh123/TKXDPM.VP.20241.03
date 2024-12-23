@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0f20632-74b4-4c2f-8164-ada7716c9892" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/db/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/db/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/mediadetail/MediaDetailForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/mediadetail/MediaDetailForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/popup/PopupForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/popup/PopupForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/images/cart.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/images/cart.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/media_detail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/media_detail.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/popup.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +57,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "last_directory_selection": "C:/Project/TKXDPM.VP.20241.03/program/src/main/java",
-    "last_opened_file_path": "C:/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar",
+    "last_opened_file_path": "D:/3.Semesters/Semester_2024.1/T5_Sofware_Design/Review/ISD.ICT.20232.03-main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -194,6 +189,7 @@
       <workItem from="1734105525959" duration="31496000" />
       <workItem from="1734251555668" duration="15000" />
       <workItem from="1734687098583" duration="9477000" />
+      <workItem from="1734922972907" duration="2882000" />
     </task>
     <servers />
   </component>
