@@ -31,6 +31,13 @@ public class DeliveryForm extends BaseForm implements Initializable {
 	private Label screenTitle;
 
 	@FXML
+	private Label rushlabel;
+	@FXML
+	private Label shippingtimelabel;
+	@FXML
+	private TextField timetextfield;
+
+	@FXML
 	private ImageView aimsImage;
 
 	@FXML
@@ -65,11 +72,12 @@ public class DeliveryForm extends BaseForm implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 		name.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                content.requestFocus(); // Delegate the focus to container
-                firstTime.setValue(false); // Variable value changed for future references
-            }
-        });
+			if(newValue && firstTime.get()){
+				content.requestFocus(); // Delegate the focus to container
+				firstTime.setValue(false); // Variable value changed for future references
+
+			}
+		});
 		this.province.getItems().addAll(Configs.PROVINCES);
 		// on mouse clicked, we back to home
 		aimsImage.setOnMouseClicked(e -> {
@@ -77,9 +85,17 @@ public class DeliveryForm extends BaseForm implements Initializable {
 		});
 		//set rushtextfield visiblle
 		rushtext.setVisible(false);
+		rushlabel.setVisible(false);
+		shippingtimelabel.setVisible(false);
+		timetextfield.setVisible(false);
+
 		//event rushbutton
 		rushbutton.setOnAction(event -> {
-			rushtext.setVisible(rushbutton.isSelected());
+			boolean isSelected = rushbutton.isSelected();
+			rushlabel.setVisible(isSelected);
+			shippingtimelabel.setVisible(isSelected);
+			timetextfield.setVisible(isSelected);
+			rushtext.setVisible(isSelected);
 		});
 
 	}

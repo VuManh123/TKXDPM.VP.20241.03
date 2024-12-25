@@ -147,8 +147,11 @@
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Label>
-            <RadioButton fx:id="rushbutton" layoutX="81.0" layoutY="543.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="114.0" text="Rush shipping" />
-            <TextField fx:id="rushtext" layoutX="54.0" layoutY="576.0" prefHeight="46.0" prefWidth="316.0" />
+            <RadioButton fx:id="rushbutton" layoutX="186.0" layoutY="538.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="114.0" text="Rush shipping" />
+            <TextField fx:id="rushtext" layoutX="145.0" layoutY="576.0" prefHeight="27.0" prefWidth="225.0" visible="false" />
+            <Label fx:id="shippingtimelabel" layoutX="17.0" layoutY="567.0" text="Shipping time" />
+            <Label fx:id="rushlabel" layoutX="11.0" layoutY="534.0" text="Rush shipping instructions" />
+            <TextField fx:id="timetextfield" layoutX="111.0" layoutY="603.0" />
          </children>
       </AnchorPane>
    </children>
