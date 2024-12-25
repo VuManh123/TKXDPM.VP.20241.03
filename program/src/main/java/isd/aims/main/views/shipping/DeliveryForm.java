@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import javafx.scene.control.RadioButton;
 
 import isd.aims.main.exception.InvalidDeliveryInfoException;
 import isd.aims.main.controller.PlaceOrderController;
@@ -28,6 +29,7 @@ public class DeliveryForm extends BaseForm implements Initializable {
 
 	@FXML
 	private Label screenTitle;
+
 	@FXML
 	private ImageView aimsImage;
 
@@ -42,6 +44,12 @@ public class DeliveryForm extends BaseForm implements Initializable {
 
 	@FXML
 	private TextField instructions;
+
+	@FXML
+	private RadioButton rushbutton;
+
+	@FXML
+	private TextField rushtext;
 
 	@FXML
 	private ComboBox<String> province;
@@ -67,6 +75,13 @@ public class DeliveryForm extends BaseForm implements Initializable {
 		aimsImage.setOnMouseClicked(e -> {
 			homeScreenHandler.show();
 		});
+		//set rushtextfield visiblle
+		rushtext.setVisible(false);
+		//event rushbutton
+		rushbutton.setOnAction(event -> {
+			rushtext.setVisible(rushbutton.isSelected());
+		});
+
 	}
 
 	@FXML
