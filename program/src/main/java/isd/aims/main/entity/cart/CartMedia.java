@@ -18,6 +18,12 @@ public class CartMedia {
         this.quantity = quantity;
         this.price = price;
     }
+
+    public CartMedia(Media media, int quantity, int price) {
+        this.media = media;
+        this.quantity = quantity;
+        this.price = price;
+    }
     
     public Media getMedia() {
         return this.media;
