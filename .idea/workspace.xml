@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae1a7400-442f-4812-b7ed-b3a6bd827e7a" name="Changes" comment="" />
+    <list default="true" id="ae1a7400-442f-4812-b7ed-b3a6bd827e7a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/program/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/entity/order/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/entity/order/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/utils/Configs.java" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/utils/Configs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/views/FXMLForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/views/FXMLForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/views/home/HomeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/views/home/HomeForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/views/home/MediaForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/views/home/MediaForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/views/order/OrderForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/java/isd/aims/main/views/order/OrderForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/home_2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/home_2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/images/back.png" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/images/back.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/images/cart.png" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/images/cart.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/media_detail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/media_detail.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/order.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/order.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/order_component.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/order_component.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/main/resources/isd/aims/main/fxml/order_detail.fxml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +30,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2qAVjKapqldQihwSzSDAxl4gJTs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,7 +44,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "lephuchung/master",
     "last_opened_file_path": "C:/Project/TKXDPM.VP.20241.03/program",
     "vue.rearranger.settings.migration": "true"
   }
@@ -41,6 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1734105502732</updated>
       <workItem from="1734105506756" duration="17000" />
+      <workItem from="1735130554485" duration="4000" />
     </task>
     <servers />
   </component>

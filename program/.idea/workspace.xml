@@ -6,7 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="e0f20632-74b4-4c2f-8164-ada7716c9892" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/order/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/order/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/utils/Configs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/utils/Configs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/FXMLForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/FXMLForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/home/HomeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/home/HomeForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/home/MediaForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/home/MediaForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/order/OrderForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/order/OrderForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/home_2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/home_2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/images/back.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/images/back.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/images/cart.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/images/cart.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/media_detail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/media_detail.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order_component.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order_component.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order_detail.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +30,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -57,7 +70,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "lephuchung/master",
     "last_directory_selection": "C:/Project/TKXDPM.VP.20241.03/program/src/main/java",
-    "last_opened_file_path": "C:/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar",
+    "last_opened_file_path": "C:/Project/TKXDPM.VP.20241.03/program/src/main/resources/isd/aims/main/fxml",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,11 +85,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Project\TKXDPM.VP.20241.03\program\src\main\resources\isd\aims\main\fxml" />
       <recent name="D:\2024_1\TA\AIMS\src\main\resources\isd\aims\main\assets\db" />
       <recent name="$PROJECT_DIR$/src/main/java/isd/aims/main/common/exception" />
       <recent name="$PROJECT_DIR$/src/main/java/isd/aims/main/subsystem" />
       <recent name="$PROJECT_DIR$/src/main/java/isd/aims/main" />
-      <recent name="$PROJECT_DIR$/src/main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Project\TKXDPM.VP.20241.03\program\src\main\resources\isd\aims\main\fxml" />
@@ -188,7 +201,8 @@
       <workItem from="1714721010325" duration="2124000" />
       <workItem from="1734105525959" duration="31496000" />
       <workItem from="1734251555668" duration="15000" />
-      <workItem from="1734687098583" duration="11978000" />
+      <workItem from="1734687098583" duration="21166000" />
+      <workItem from="1735056552728" duration="21979000" />
     </task>
     <servers />
   </component>

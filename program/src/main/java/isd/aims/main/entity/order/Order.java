@@ -21,6 +21,11 @@ public class Order {
         this.lstOrderMedia = lstOrderMedia;
     }
 
+    public Order(int id, int shippingFees){
+        this.id = id;
+        this.shippingFees = shippingFees;
+    }
+
     public void addOrderMedia(OrderMedia om){
         this.lstOrderMedia.add(om);
     }

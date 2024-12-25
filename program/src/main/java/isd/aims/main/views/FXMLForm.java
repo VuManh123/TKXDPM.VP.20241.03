@@ -13,7 +13,6 @@ public class FXMLForm {
 
 	protected FXMLLoader loader;
 	protected AnchorPane content;
-
 	public FXMLForm(String screenPath) throws IOException {
 		this.loader = new FXMLLoader(App.class.getResource(screenPath));
 		// Set this class as the controller
