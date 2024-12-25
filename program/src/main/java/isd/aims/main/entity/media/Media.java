@@ -32,6 +32,17 @@ public class Media {
         stm = DBConnection.getConnection().createStatement();
     }
 
+    public Media(int id, String title, String category, int value, int price, int quantity, String type, String imageURL) {
+        this.id = id;
+        this.title = title;
+        this.category = category;
+        this.value = value;
+        this.price = price;
+        this.quantity = quantity;
+        this.type = type;
+        this.imageURL = imageURL;
+    }
+
     public Media (int id, String title, String category, int price, int quantity, String type) throws SQLException{
         this.id = id;
         this.title = title;
@@ -41,6 +52,9 @@ public class Media {
         this.type = type;
 
         //stm = DBConnection.getConnection().createStatement();
+    }
+
+    public Media(int mediaId, Object o) {
     }
 
     public int getQuantity() throws SQLException{
@@ -86,6 +100,7 @@ public class Media {
     }
 
     public List<Media> getSearchMedia(String keyword) throws SQLException {
+        LOGGER.info("getSearchMedia check keyword: "+ keyword);
         String sql = "SELECT * FROM Media WHERE title LIKE '%" + keyword + "%'";
         Statement stm = DBConnection.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);

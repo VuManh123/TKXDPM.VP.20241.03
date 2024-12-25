@@ -1,5 +1,6 @@
 package isd.aims.main.views.home;
 
+import isd.aims.main.controller.OrderController;
 import isd.aims.main.exception.ViewCartException;
 import isd.aims.main.controller.HomeController;
 import isd.aims.main.controller.ViewCartController;
@@ -9,8 +10,10 @@ import isd.aims.main.utils.Configs;
 import isd.aims.main.utils.Utils;
 import isd.aims.main.views.BaseForm;
 import isd.aims.main.views.cart.CartForm;
+import isd.aims.main.views.order.OrderForm;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -42,41 +45,30 @@ public class HomeForm extends BaseForm implements Initializable {
 
     @FXML
     private Label numMediaInCart;
-
     @FXML
     private ImageView aimsImage;
-
-    @FXML
-    private ImageView cartImage;
-
-
     @FXML
     private HBox hboxMedia;
-
     @FXML
     private SplitMenuButton splitMenuBtnSearch;
-
+    @FXML
+    private Button btnCart;
+    @FXML
+    private Button btnOrder;
     @FXML
     private TextField searchTextField;
-
     @FXML
     private RadioButton sortByPriceIncrease;
-
     @FXML
     private RadioButton sortByPriceDecrease;
-
     @FXML
     private RadioButton sortByAlphabetAZ;
-
     @FXML
     private RadioButton sortByAlphabetZA;
-
     @FXML
     private CheckBox filterBook;
-
     @FXML
     private CheckBox filterDVD;
-
     @FXML
     private CheckBox filterCD;
 
@@ -99,7 +91,15 @@ public class HomeForm extends BaseForm implements Initializable {
 
     @Override
     public void show() {
-        numMediaInCart.setText(String.valueOf(Cart.getCart().getListMedia().size()) + " media");
+        int cartSize = Cart.getCart().getListMedia().size();
+        if (cartSize == 0) {
+            numMediaInCart.setVisible(false);
+            numMediaInCart.setManaged(false);
+        } else {
+            numMediaInCart.setVisible(true);
+            numMediaInCart.setManaged(true);
+            numMediaInCart.setText(String.valueOf(cartSize));
+        }
         super.show();
     }
 
@@ -122,7 +122,8 @@ public class HomeForm extends BaseForm implements Initializable {
         }
 
         aimsImage.setOnMouseClicked(e -> addMediaHome(this.filteredItems));
-        cartImage.setOnMouseClicked(e -> {
+
+        btnCart.setOnMouseClicked(e -> {
             try {
                 LOGGER.info("User clicked to view cart");
                 CartForm cartScreen = new CartForm(this.stage, Configs.CART_SCREEN_PATH);
@@ -131,6 +132,19 @@ public class HomeForm extends BaseForm implements Initializable {
                 cartScreen.requestToViewCart(this);
             } catch (IOException | SQLException e1) {
                 throw new ViewCartException(Arrays.toString(e1.getStackTrace()).replaceAll(", ", "\n"));
+            }
+        });
+
+        btnOrder.setOnMouseClicked(e -> {
+            LOGGER.info("User clicked to view order");
+            OrderForm orderScreen = null;
+            try {
+                orderScreen = new OrderForm(this.stage, Configs.ORDER_SCREEN_PATH);
+                orderScreen.setHomeScreenHandler(this);
+                orderScreen.setBController(new OrderController());
+                orderScreen.requestToViewOrder(this);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
@@ -144,6 +158,7 @@ public class HomeForm extends BaseForm implements Initializable {
         filterBook.setOnAction(e -> filterMedia());
         filterDVD.setOnAction(e -> filterMedia());
         filterCD.setOnAction(e -> filterMedia());
+
     }
 
     public void setImage() {
@@ -151,10 +166,6 @@ public class HomeForm extends BaseForm implements Initializable {
         File file1 = new File(Configs.IMAGE_PATH_ICON + "/" + "Logo.png");
         Image img1 = new Image(file1.toURI().toString());
         aimsImage.setImage(img1);
-
-        File file2 = new File(Configs.IMAGE_PATH_ICON + "/" + "cart.png");
-        Image img2 = new Image(file2.toURI().toString());
-        cartImage.setImage(img2);
     }
 
     @SuppressWarnings("rawtypes")
@@ -178,6 +189,7 @@ public class HomeForm extends BaseForm implements Initializable {
             return;
         }
     }
+
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     private void addMenuItem(int position, String text, MenuButton menuButton){
