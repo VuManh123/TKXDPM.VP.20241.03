@@ -16,7 +16,7 @@ public class DBConnection {
         if (connect != null) return connect;
 
         try {
-            connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/aims","root","motconvit123");
+            connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/aims","root","manhvu123");
             return connect;
         } catch (Exception e) {
             LOGGER.info(e.getMessage());
