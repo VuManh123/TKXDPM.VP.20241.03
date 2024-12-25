@@ -1,6 +1,6 @@
 package isd.aims.main.entity.media;
 
-import isd.aims.main.entity.db.DBConnection;
+import isd.aims.main.db.DBConnection;
 import isd.aims.main.utils.Utils;
 
 import java.sql.ResultSet;
@@ -80,6 +80,26 @@ public class Media {
                 .setMediaURL(res.getString("imageUrl"))
                 .setPrice(res.getInt("price"))
                 .setType(res.getString("type"));
+            medium.add(media);
+        }
+        return medium;
+    }
+
+    public List<Media> getSearchMedia(String keyword) throws SQLException {
+        LOGGER.info("getSearchMedia check keyword: "+ keyword);
+        String sql = "SELECT * FROM Media WHERE title LIKE '%" + keyword + "%'";
+        Statement stm = DBConnection.getConnection().createStatement();
+        ResultSet res = stm.executeQuery(sql);
+        List<Media> medium = new ArrayList<>();
+        while (res.next()) {
+            Media media = new Media()
+                    .setId(res.getInt("id"))
+                    .setTitle(res.getString("title"))
+                    .setQuantity(res.getInt("quantity"))
+                    .setCategory(res.getString("category"))
+                    .setMediaURL(res.getString("imageUrl"))
+                    .setPrice(res.getInt("price"))
+                    .setType(res.getString("type"));
             medium.add(media);
         }
         return medium;

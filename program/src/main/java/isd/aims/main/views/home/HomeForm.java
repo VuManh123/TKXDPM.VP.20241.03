@@ -14,6 +14,13 @@ import isd.aims.main.views.order.OrderForm;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -27,6 +34,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
@@ -37,33 +45,37 @@ public class HomeForm extends BaseForm implements Initializable {
 
     @FXML
     private Label numMediaInCart;
-
     @FXML
     private ImageView aimsImage;
-
-    // @FXML
-    // private VBox vboxMedia1;
-
-    // @FXML
-    // private VBox vboxMedia2;
-
-    // @FXML
-    // private VBox vboxMedia3;
-
     @FXML
     private HBox hboxMedia;
-
     @FXML
     private SplitMenuButton splitMenuBtnSearch;
-
     @FXML
     private Button btnCart;
-
     @FXML
     private Button btnOrder;
+    @FXML
+    private TextField searchTextField;
+    @FXML
+    private RadioButton sortByPriceIncrease;
+    @FXML
+    private RadioButton sortByPriceDecrease;
+    @FXML
+    private RadioButton sortByAlphabetAZ;
+    @FXML
+    private RadioButton sortByAlphabetZA;
+    @FXML
+    private CheckBox filterBook;
+    @FXML
+    private CheckBox filterDVD;
+    @FXML
+    private CheckBox filterCD;
 
     @SuppressWarnings("rawtypes")
     private List homeItems;
+
+    private List<MediaForm> filteredItems;
 
     public HomeForm(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
@@ -95,7 +107,7 @@ public class HomeForm extends BaseForm implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         setBController(new HomeController());
-        try{
+        try {
             List medium = getBController().getAllMedia();
             this.homeItems = new ArrayList();
             for (Object object : medium) {
@@ -103,14 +115,13 @@ public class HomeForm extends BaseForm implements Initializable {
                 MediaForm m1 = new MediaForm(Configs.HOME_MEDIA_PATH, media, this);
                 this.homeItems.add(m1);
             }
-        }catch (SQLException | IOException e){
-            LOGGER.info("Errors occured: " + e.getMessage());
+            this.filteredItems = new ArrayList<>(homeItems);
+        } catch (SQLException | IOException e) {
+            LOGGER.info("Errors occurred: " + e.getMessage());
             e.printStackTrace();
         }
 
-        aimsImage.setOnMouseClicked(e -> {
-            addMediaHome(this.homeItems);
-        });
+        aimsImage.setOnMouseClicked(e -> addMediaHome(this.filteredItems));
 
         btnCart.setOnMouseClicked(e -> {
             try {
@@ -129,18 +140,25 @@ public class HomeForm extends BaseForm implements Initializable {
             OrderForm orderScreen = null;
             try {
                 orderScreen = new OrderForm(this.stage, Configs.ORDER_SCREEN_PATH);
+                orderScreen.setHomeScreenHandler(this);
+                orderScreen.setBController(new OrderController());
+                orderScreen.requestToViewOrder(this);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            orderScreen.setHomeScreenHandler(this);
-            orderScreen.setBController(new OrderController());
-            orderScreen.requestToViewOrder(this);
         });
 
-        addMediaHome(this.homeItems);
-        addMenuItem(0, "Book", splitMenuBtnSearch);
-        addMenuItem(1, "DVD", splitMenuBtnSearch);
-        addMenuItem(2, "CD", splitMenuBtnSearch);
+        addMediaHome(this.filteredItems);
+
+        sortByPriceIncrease.setOnAction(e -> sortMediaByPrice(true));
+        sortByPriceDecrease.setOnAction(e -> sortMediaByPrice(false));
+        sortByAlphabetAZ.setOnAction(e -> sortMediaByTitle(true));
+        sortByAlphabetZA.setOnAction(e -> sortMediaByTitle(false));
+
+        filterBook.setOnAction(e -> filterMedia());
+        filterDVD.setOnAction(e -> filterMedia());
+        filterCD.setOnAction(e -> filterMedia());
+
     }
 
     public void setImage() {
@@ -151,18 +169,19 @@ public class HomeForm extends BaseForm implements Initializable {
     }
 
     @SuppressWarnings("rawtypes")
-    public void addMediaHome(List items){
-        ArrayList mediaItems = (ArrayList)((ArrayList) items).clone();
+    public void addMediaHome(List items) {
+        int size = items.size() / 4;
+        System.out.println(size);
+        ArrayList<MediaForm> mediaItems = new ArrayList<>((ArrayList<MediaForm>) items);
         hboxMedia.getChildren().forEach(node -> {
             VBox vBox = (VBox) node;
             vBox.getChildren().clear();
         });
-        while(!mediaItems.isEmpty()){
+        while (!mediaItems.isEmpty()) {
             hboxMedia.getChildren().forEach(node -> {
-                int vid = hboxMedia.getChildren().indexOf(node);
                 VBox vBox = (VBox) node;
-                while(vBox.getChildren().size()<3 && !mediaItems.isEmpty()){
-                    MediaForm media = (MediaForm) mediaItems.get(0);
+                while (vBox.getChildren().size() < size && !mediaItems.isEmpty()) {
+                    MediaForm media = mediaItems.get(0);
                     vBox.getChildren().add(media.getContent());
                     mediaItems.remove(media);
                 }
@@ -170,6 +189,7 @@ public class HomeForm extends BaseForm implements Initializable {
             return;
         }
     }
+
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     private void addMenuItem(int position, String text, MenuButton menuButton){
@@ -199,5 +219,53 @@ public class HomeForm extends BaseForm implements Initializable {
             addMediaHome(filteredItems);
         });
         menuButton.getItems().add(position, menuItem);
+    }
+
+    @FXML
+    private void handleSearch() {
+        LOGGER.info("Search button clicked");
+        String keyword = searchTextField.getText().toLowerCase();
+        try {
+            List<Media> mediaList = new Media().getSearchMedia(keyword);
+            List<MediaForm> mediaForms = new ArrayList<>();
+            for (Media media : mediaList) {
+                MediaForm mediaForm = new MediaForm(Configs.HOME_MEDIA_PATH, media, this);
+                mediaForms.add(mediaForm);
+            }
+            this.homeItems = mediaForms;
+            this.filteredItems = new ArrayList<>(homeItems);
+            addMediaHome(mediaForms);
+        } catch (SQLException | IOException e) {
+            LOGGER.severe("Error fetching media data: " + e.getMessage());
+        }
+    }
+
+    private void sortMediaByPrice(boolean ascending) {
+        filteredItems.sort(Comparator.comparing((MediaForm m) -> m.getMedia().getPrice()));
+        if (!ascending) {
+            filteredItems.sort(Comparator.comparing((MediaForm m) -> m.getMedia().getPrice()).reversed());
+        }
+        addMediaHome(filteredItems);
+    }
+
+    private void sortMediaByTitle(boolean ascending) {
+        filteredItems.sort(Comparator.comparing((MediaForm m) -> m.getMedia().getTitle()));
+        if (!ascending) {
+            filteredItems.sort(Comparator.comparing((MediaForm m) -> m.getMedia().getTitle()).reversed());
+        }
+        addMediaHome(filteredItems);
+    }
+
+    private void filterMedia() {
+        filteredItems = new ArrayList<>();
+        for (Object mediaForm : homeItems) {
+            Media media = mediaForm instanceof MediaForm ? ((MediaForm) mediaForm).getMedia() : null;
+            if ((filterBook.isSelected() && "Book".equalsIgnoreCase(media.getType())) ||
+                    (filterDVD.isSelected() && "DVD".equalsIgnoreCase(media.getType())) ||
+                    (filterCD.isSelected() && "CD".equalsIgnoreCase(media.getType()))) {
+                filteredItems.add((MediaForm) mediaForm);
+            }
+        }
+        addMediaHome(filteredItems);
     }
 }

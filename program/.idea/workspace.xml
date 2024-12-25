@@ -5,21 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0f20632-74b4-4c2f-8164-ada7716c9892" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../documents/database/create_table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../documents/database/insert_data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/dao/IMediaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/dao/SQLMediaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/db/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/TKXDPM.VP.20241.03.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/order/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/order/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/utils/Configs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/utils/Configs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/FXMLForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/FXMLForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/db/DBConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/media/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/media/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/media/Media.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/media/Media.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/payment/PaymentTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/entity/payment/PaymentTransaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/home/HomeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/home/HomeForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/home/MediaForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/home/MediaForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/order/OrderForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/order/OrderForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/assets/db/.fuse_hidden0000007d00000003" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/assets/db/.fuse_hidden0000007d00000006" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/assets/db/aims.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/assets/db/aims.mwb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/assets/db/aims_sqlite.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/cart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/cart.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/home_2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/home_2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/images/back.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/images/back.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/images/cart.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/images/cart.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/media_detail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/media_detail.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order_component.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order_component.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order_detail.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/invoice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/invoice.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order_2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order_2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order_detail_media.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/order_detail_media.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/shipping.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/shipping.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +88,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "lephuchung/master",
+    "git-widget-placeholder": "Merging lephuchung/master",
     "last_directory_selection": "C:/Project/TKXDPM.VP.20241.03/program/src/main/java",
     "last_opened_file_path": "C:/Project/TKXDPM.VP.20241.03/program/src/main/resources/isd/aims/main/fxml",
     "node.js.detected.package.eslint": "true",
@@ -203,6 +223,7 @@
       <workItem from="1734251555668" duration="15000" />
       <workItem from="1734687098583" duration="21166000" />
       <workItem from="1735056552728" duration="21979000" />
+      <workItem from="1735130764081" duration="4702000" />
     </task>
     <servers />
   </component>

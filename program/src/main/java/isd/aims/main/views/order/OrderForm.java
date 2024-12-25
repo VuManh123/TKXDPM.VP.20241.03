@@ -180,13 +180,13 @@ public class OrderForm extends BaseForm {
 
     @SuppressWarnings("rawtypes")
     public void addMediaOrder(List items){
+        LOGGER.info("check list item: "+ items);
         ArrayList mediaItems = (ArrayList)((ArrayList) items).clone();
         orderMediaList.getChildren().clear();
         while(!mediaItems.isEmpty()){
             OrderDetailMediaForm media = (OrderDetailMediaForm) mediaItems.get(0);
             orderMediaList.getChildren().add(media.getContent());
             mediaItems.remove(media);
-            return;
         }
     }
 

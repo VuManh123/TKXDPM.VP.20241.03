@@ -20,6 +20,9 @@
                      <image>
                         <Image url="@images/Logo.png" />
                      </image>
+                     <StackPane.margin>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </StackPane.margin>
                   </ImageView>
                </children>
             </StackPane>
