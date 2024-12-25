@@ -1,6 +1,6 @@
 package isd.aims.main.entity.media;
 
-import isd.aims.main.entity.db.DBConnection;
+import isd.aims.main.db.DBConnection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
