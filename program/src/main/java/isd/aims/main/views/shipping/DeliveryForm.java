@@ -24,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 public class DeliveryForm extends BaseForm implements Initializable {
 
@@ -60,6 +61,18 @@ public class DeliveryForm extends BaseForm implements Initializable {
 
 	@FXML
 	private ComboBox<String> province;
+
+
+	@FXML
+	private Button btnConfirmDelivery;
+
+	@FXML
+	private TextField email;
+
+	@FXML
+	private Label screenTitle1;
+
+
 
 	private Order order;
 
