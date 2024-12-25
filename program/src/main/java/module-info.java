@@ -12,8 +12,9 @@ module isd.aims.main {
     opens isd.aims.main.views.shipping to javafx.fxml;
     opens isd.aims.main.views.invoice to javafx.fxml;
     opens isd.aims.main.views.payment to javafx.fxml;
+    opens isd.aims.main.views.order to javafx.fxml;
+    opens isd.aims.main.views.mediadetail to javafx.fxml;
 
     exports isd.aims.main;
     exports isd.aims.main.views;
-    opens isd.aims.main.views.mediadetail to javafx.fxml;
 }

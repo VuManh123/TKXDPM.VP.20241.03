@@ -14,14 +14,15 @@ public class DBConnection {
         if (connect != null) return connect;
 
         try {
-            connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/aims","root","manhvu123");
+//            connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/aims","root","manhvu123");
+//            // DB cua hung, dung xoa
+            connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/aims","root","");
             return connect;
         } catch (Exception e) {
             LOGGER.info(e.getMessage());
             return connect;
         }
     }
-
 
     public static void main(String[] args) {
         DBConnection.getConnection();

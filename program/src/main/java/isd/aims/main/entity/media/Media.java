@@ -86,6 +86,7 @@ public class Media {
     }
 
     public List<Media> getSearchMedia(String keyword) throws SQLException {
+        LOGGER.info("getSearchMedia check keyword: "+ keyword);
         String sql = "SELECT * FROM Media WHERE title LIKE '%" + keyword + "%'";
         Statement stm = DBConnection.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);

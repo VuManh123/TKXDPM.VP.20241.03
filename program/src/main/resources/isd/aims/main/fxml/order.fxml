@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="620.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="620.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1080.0">
          <children>
@@ -22,12 +21,12 @@
                <children>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="864.0">
                      <children>
-                        <Button fx:id="btnBack" layoutX="13.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 999; -fx-border-radius: 999; -fx-background-color: #fff;">
+                        <Button fx:id="btnBack" alignment="CENTER" layoutX="13.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 999; -fx-border-radius: 999; -fx-background-color: #fff;">
                            <font>
                               <Font size="16.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/back.png" />
                                  </image>
@@ -56,7 +55,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Label fx:id="numberMediaInCart" alignment="CENTER" contentDisplay="CENTER" layoutX="179.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #DD2334; -fx-background-radius: 999; -fx-border-radius: 999;" text="XX" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="numMediaInCart" alignment="CENTER" contentDisplay="CENTER" layoutX="179.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #DD2334; -fx-background-radius: 999; -fx-border-radius: 999;" text="XX" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="9.0" />
                            </font>
@@ -67,8 +66,130 @@
             </HBox>
             <HBox layoutY="60.0" prefHeight="560.0" prefWidth="1080.0">
                <children>
-                  <ScrollPane prefHeight="560.0" prefWidth="400.0" />
-                  <ScrollPane prefHeight="560.0" prefWidth="680.0" />
+                  <ScrollPane prefHeight="560.0" prefWidth="316.0">
+                     <content>
+                        <VBox fx:id="listOrder" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="290.0" translateX="10.0" />
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane prefHeight="560.0" prefWidth="764.0">
+                     <content>
+                        <VBox fx:id="orderDetail" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="747.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="727.0">
+                                 <children>
+                                    <Label text="Mã đơn hàng: ">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="orderId">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="727.0">
+                                 <children>
+                                    <Label text="Thời gian đặt hàng: ">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="orderTime">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="727.0">
+                                 <children>
+                                    <Label text="Địa chỉ nhận hàng: ">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="orderAddress">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="727.0">
+                                 <children>
+                                    <Label text="Email:">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="orderEmail">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="727.0">
+                                 <children>
+                                    <Label text="Số điện thoại: ">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="orderPhoneNumber">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="727.0">
+                                 <children>
+                                    <Label text="Phí giao hàng: ">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="orderShippingFee">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="727.0">
+                                 <children>
+                                    <Label text="Tổng chi phí: ">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="orderTotalPrice">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="727.0" style="-fx-border-color: #000; -fx-border-width: 1 0 0 0;">
+                                 <children>
+                                    <Label text="Danh sách sản phẩm">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <VBox fx:id="orderMediaList" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="727.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
                </children>
             </HBox>
          </children>

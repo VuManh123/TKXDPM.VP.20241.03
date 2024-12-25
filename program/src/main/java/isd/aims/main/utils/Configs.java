@@ -47,6 +47,10 @@ public class Configs {
 	public static final String RESULT_SCREEN_PATH = "fxml/result.fxml";
 	public static final String SPLASH_SCREEN_PATH = "fxml/splash_2.fxml";
 	public static final String CART_SCREEN_PATH = "fxml/cart.fxml";
+	public static final String ORDER_SCREEN_PATH = "fxml/order_2.fxml";
+	public static final String ORDER_COMPONENT_PATH = "fxml/order_component.fxml";
+	public static final String ORDER_DETAIL_SCREEN_PATH = "fxml/order_detail.fxml";
+	public static final String ORDER_DETAIL_MEDIA_PATH = "fxml/order_detail_media.fxml";
 	public static final String SHIPPING_SCREEN_PATH = "fxml/shipping.fxml";
 	public static final String CART_MEDIA_PATH = "fxml/media_cart.fxml";
 	public static final String HOME_PATH  = "fxml/home_2.fxml";
