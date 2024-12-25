@@ -156,22 +156,33 @@ public class CartForm extends BaseForm {
 
 		// get list media of cart after check availability
 		List lstMedia = getBController().getListCartMedia();
+		LOGGER.info("Cart media count: " + lstMedia.size());
 
 		try {
 			for (Object cm : lstMedia) {
-
-				// display the attribute of vboxCart media
 				CartMedia cartMedia = (CartMedia) cm;
+
+				// Log thông tin về cartMedia trước khi thêm vào
+				LOGGER.info("Media title: " + cartMedia.getMedia().getTitle());
+				LOGGER.info("Media image: " + cartMedia.getMedia().getImageURL());
+				LOGGER.info("Media price: " + cartMedia.getPrice());
+				LOGGER.info("Media quantity: " + cartMedia.getQuantity());
+
+				// Create MediaForm and set cart media
 				MediaForm mediaCartScreen = new MediaForm(Configs.CART_MEDIA_PATH, this);
 				mediaCartScreen.setCartMedia(cartMedia);
 
-				// add spinner
+				// Add spinner and media form content to vboxCart
 				vboxCart.getChildren().add(mediaCartScreen.getContent());
 			}
+
 			// calculate subtotal and amount
 			updateCartAmount();
+
+			LOGGER.info("Finished adding media to cart.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

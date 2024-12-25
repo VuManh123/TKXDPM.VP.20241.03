@@ -170,7 +170,7 @@ public class HomeForm extends BaseForm implements Initializable {
 
     @SuppressWarnings("rawtypes")
     public void addMediaHome(List items) {
-        int size = items.size() / 4;
+        int size = items.size() / 4 + 1;
         System.out.println(size);
         ArrayList<MediaForm> mediaItems = new ArrayList<>((ArrayList<MediaForm>) items);
         hboxMedia.getChildren().forEach(node -> {
