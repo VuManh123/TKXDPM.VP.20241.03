@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e0f20632-74b4-4c2f-8164-ada7716c9892" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/db/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/db/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/cart/CartForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/cart/CartForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/home/HomeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/home/HomeForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/cart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/cart.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/media_cart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/media_cart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/shipping/DeliveryForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isd/aims/main/views/shipping/DeliveryForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/shipping.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isd/aims/main/fxml/shipping.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +192,7 @@
       <workItem from="1734687098583" duration="21166000" />
       <workItem from="1735056552728" duration="21979000" />
       <workItem from="1735130764081" duration="4702000" />
-      <workItem from="1735145093759" duration="4212000" />
+      <workItem from="1735145093759" duration="6021000" />
     </task>
     <servers />
   </component>

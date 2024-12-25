@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -27,6 +28,8 @@ public class DeliveryForm extends BaseForm implements Initializable {
 
 	@FXML
 	private Label screenTitle;
+	@FXML
+	private ImageView aimsImage;
 
 	@FXML
 	private TextField name;
@@ -60,6 +63,10 @@ public class DeliveryForm extends BaseForm implements Initializable {
             }
         });
 		this.province.getItems().addAll(Configs.PROVINCES);
+		// on mouse clicked, we back to home
+		aimsImage.setOnMouseClicked(e -> {
+			homeScreenHandler.show();
+		});
 	}
 
 	@FXML
