@@ -1,8 +1,6 @@
-package isd.aims.main.entity.db;
+package isd.aims.main.db;
 
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.logging.Logger;
 import java.sql.Connection;
 import isd.aims.main.utils.Utils;
@@ -16,7 +14,7 @@ public class DBConnection {
         if (connect != null) return connect;
 
         try {
-            connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/aims","root","motconvit123");
+            connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/aims","root","manhvu123");
             return connect;
         } catch (Exception e) {
             LOGGER.info(e.getMessage());
