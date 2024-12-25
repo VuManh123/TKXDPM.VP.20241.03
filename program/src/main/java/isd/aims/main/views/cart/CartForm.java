@@ -163,7 +163,8 @@ public class CartForm extends BaseForm {
 				CartMedia cartMedia = (CartMedia) cm;
 
 				// Log thông tin về cartMedia trước khi thêm vào
-				LOGGER.info("Adding media to cart: " + cartMedia.getMedia().getTitle());
+				LOGGER.info("Media title: " + cartMedia.getMedia().getTitle());
+				LOGGER.info("Media image: " + cartMedia.getMedia().getImageURL());
 				LOGGER.info("Media price: " + cartMedia.getPrice());
 				LOGGER.info("Media quantity: " + cartMedia.getQuantity());
 
@@ -171,12 +172,8 @@ public class CartForm extends BaseForm {
 				MediaForm mediaCartScreen = new MediaForm(Configs.CART_MEDIA_PATH, this);
 				mediaCartScreen.setCartMedia(cartMedia);
 
-				// Log thông tin sau khi tạo MediaForm và trước khi thêm vào vboxCart
-				LOGGER.info("Adding media form to vboxCart.");
-
 				// Add spinner and media form content to vboxCart
 				vboxCart.getChildren().add(mediaCartScreen.getContent());
-				LOGGER.info("Content is null: " + (mediaCartScreen.getContent() == null));
 			}
 
 			// calculate subtotal and amount
