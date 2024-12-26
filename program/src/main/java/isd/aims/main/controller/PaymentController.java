@@ -43,13 +43,45 @@ public class PaymentController extends BaseController implements TransactionResu
 		if (transactionResult != null && transactionResult.isSuccess()) {
 			try {
 				transactionResult.save(1); // Lưu giao dịch vào cơ sở dữ liệu nếu thành công
+				// Lấy thông tin từ giỏ hàng
+				Cart cart = Cart.getCart();
+				StringBuilder orderDetails = new StringBuilder();
+				orderDetails.append("Dear Customer,\n\n");
+				orderDetails.append("Thank you for your order. Here are the details of your transaction:\n\n");
+//				orderDetails.append("Transaction ID: ").append(transactionResult.getTransactionId()).append("\n");
+//				orderDetails.append("Transaction Date: ").append(transactionResult.getCreatedAt()).append("\n");
+//				orderDetails.append("Total Amount: ").append(transactionResult.getAmount()).append(" VND\n\n");
+//				orderDetails.append("Order Details:\n");
+//				cart.getItems().forEach(item -> {
+//					orderDetails.append("- Product: ").append(item.getProduct().getName()).append("\n");
+//					orderDetails.append("  Quantity: ").append(item.getQuantity()).append("\n");
+//					orderDetails.append("  Price: ").append(item.getProduct().getPrice()).append(" VND\n\n");
+//				});
+				orderDetails.append("Thank you for shopping with us!\n");
+				orderDetails.append("Best regards,\n");
+				orderDetails.append("AIMS Team");
 				emptyCart(); // Làm trống giỏ hàng
-				String subject = "Payment successful";
-				String body = transactionResult.getMessage();
-				String to = "vuducmanh10a@gmail.com"; // TODO: Add email to UI
-				Email.sendMessage(to, subject, body);
+
+				// Khởi tạo EmailSenderService với thông tin tài khoản email
+				String senderEmail = "devvu203@gmail.com";
+				String senderPassword = "zzgy xrxc clro fxpx"; // Mật khẩu ứng dụng
+				Email emailSender = new Email(senderEmail, senderPassword);
+
+				// Gửi email
+				String recipientEmail = "vuducmanh10a@gmail.com"; // Email người nhận
+				String subject = "AIMS: Place Order Successfully!";
+				String body = orderDetails.toString();
+
+				try {
+					emailSender.sendEmail(recipientEmail, subject, body);
+					System.out.println("AIMS has sent to your email.");
+				} catch (MessagingException e) {
+					System.err.println("Failed to send email: " + e.getMessage());
+					return;
+				}
+
 				System.out.println("Lưu thành công");
-			} catch (SQLException | IOException | GeneralSecurityException | MessagingException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		} else {

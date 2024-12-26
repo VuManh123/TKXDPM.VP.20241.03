@@ -30,6 +30,7 @@ public class VnPaySubsystem implements IPayment {
     public String generatePaymentURL(int amount, String contents) {
 
         try {
+            System.out.println("Calling generatePayOrderUrl with amount: " + amount + " and contents: " + contents);
             return ctrl.generatePayOrderUrl(amount, contents);
         } catch (IOException e) {
             throw new RuntimeException(e);

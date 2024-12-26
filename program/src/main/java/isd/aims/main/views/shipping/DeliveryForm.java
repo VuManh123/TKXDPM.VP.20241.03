@@ -51,8 +51,6 @@ public class DeliveryForm extends BaseForm implements Initializable {
 	@FXML
 	private TextField address;
 
-	@FXML
-	private TextField instructions;
 
 	@FXML
 	private RadioButton rushbutton;
@@ -122,7 +120,6 @@ public class DeliveryForm extends BaseForm implements Initializable {
 		messages.put("name", name.getText());
 		messages.put("phone", phone.getText());
 		messages.put("address", address.getText());
-		messages.put("instructions", instructions.getText());
 		messages.put("province", province.getValue());
 		try {
 			// process and validate delivery info
