@@ -12,6 +12,8 @@ module isd.aims.main {
     requires com.google.api.client.extensions.jetty.auth;
     requires org.apache.commons.codec;
     requires mail;
+    requires com.google.auth.oauth2;
+    requires com.google.auth;
 
     opens isd.aims.main to javafx.fxml;
     opens isd.aims.main.views to javafx.fxml;

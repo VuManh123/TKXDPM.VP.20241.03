@@ -49,7 +49,7 @@ public class PaymentController extends BaseController implements TransactionResu
 				String to = "vuducmanh10a@gmail.com"; // TODO: Add email to UI
 				Email.sendMessage(to, subject, body);
 				System.out.println("Lưu thành công");
-			} catch (SQLException | IOException | GeneralSecurityException | MessagingException e) {
+			} catch (SQLException | IOException| GeneralSecurityException| MessagingException e) {
 				e.printStackTrace();
 			}
 		} else {

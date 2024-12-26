@@ -28,12 +28,14 @@ public class PaymentTransaction {
 	public void save(int orderId) throws SQLException {
 		this.orderID = orderId;
 		Statement stm = DBConnection.getConnection().createStatement();
-		String query = "INSERT INTO \"Transaction\" ( orderID, createAt, content) " +
-				"VALUES ( ?, ?, ?)";
+		String query = "INSERT INTO \"payment_transaction\" (  date, time, transaction_content, orderID) " +
+				"VALUES ( ?, ?, ?, ?)";
 		try (PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query)) {
-			preparedStatement.setInt(1, 1);
+			preparedStatement.setDate(1, new java.sql.Date(createdAt.getTime()));
 			preparedStatement.setDate(2, new java.sql.Date(createdAt.getTime()));
-			preparedStatement.setString(3,transactionContent );
+			preparedStatement.setString(3, transactionContent);
+			preparedStatement.setInt(4, orderID);
+
 
 			preparedStatement.executeUpdate();
 		} catch (Exception exception) {
@@ -44,7 +46,7 @@ public class PaymentTransaction {
 	public int checkPaymentByOrderId(int orderId) throws SQLException {
 		int count = 0;
 
-		String query = "SELECT COUNT(*) FROM Transaction WHERE orderID = ?";
+		String query = "SELECT COUNT(*) FROM \"payment_transaction\" WHERE orderID = ?";
 
 		try (PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query)) {
 			preparedStatement.setInt(1, orderId);
