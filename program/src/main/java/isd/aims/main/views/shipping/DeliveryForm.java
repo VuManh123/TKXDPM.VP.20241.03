@@ -25,6 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 
 public class DeliveryForm extends BaseForm implements Initializable {
 
@@ -36,7 +37,7 @@ public class DeliveryForm extends BaseForm implements Initializable {
 	@FXML
 	private Label shippingtimelabel;
 	@FXML
-	private TextField timetextfield;
+	private DatePicker timetextfield;
 
 	@FXML
 	private ImageView aimsImage;
