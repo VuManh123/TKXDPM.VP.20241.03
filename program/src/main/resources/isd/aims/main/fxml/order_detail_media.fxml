@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox onMouseClicked="#handleVBoxClick" prefHeight="80.0" prefWidth="727.0" style="-fx-border-color: #000; -fx-border-width: 0 0 1 0;">
+      <HBox prefHeight="80.0" prefWidth="727.0" style="-fx-border-color: #000; -fx-border-width: 0 0 1 0;">
          <children>
             <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="80.0">
                <children>
