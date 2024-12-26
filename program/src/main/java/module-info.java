@@ -3,6 +3,15 @@ module isd.aims.main {
     requires javafx.fxml;
     requires java.sql;
     requires javafx.web;
+    requires com.google.api.services.gmail;
+    requires com.google.api.client.auth;
+    requires com.google.api.client.extensions.java6.auth;
+    requires google.api.client;
+    requires com.google.api.client;
+    requires com.google.api.client.json.gson;
+    requires com.google.api.client.extensions.jetty.auth;
+    requires org.apache.commons.codec;
+    requires mail;
 
     opens isd.aims.main to javafx.fxml;
     opens isd.aims.main.views to javafx.fxml;
