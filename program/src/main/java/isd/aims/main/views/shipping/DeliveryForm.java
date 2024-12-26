@@ -24,11 +24,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 
 public class DeliveryForm extends BaseForm implements Initializable {
 
 	@FXML
 	private Label screenTitle;
+
+	@FXML
+	private Label rushlabel;
+	@FXML
+	private Label shippingtimelabel;
+	@FXML
+	private DatePicker timetextfield;
 
 	@FXML
 	private ImageView aimsImage;
@@ -54,6 +63,18 @@ public class DeliveryForm extends BaseForm implements Initializable {
 	@FXML
 	private ComboBox<String> province;
 
+
+	@FXML
+	private Button btnConfirmDelivery;
+
+	@FXML
+	private TextField email;
+
+	@FXML
+	private Label screenTitle1;
+
+
+
 	private Order order;
 
 	public DeliveryForm(Stage stage, String screenPath, Order order) throws IOException {
@@ -65,11 +86,12 @@ public class DeliveryForm extends BaseForm implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 		name.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                content.requestFocus(); // Delegate the focus to container
-                firstTime.setValue(false); // Variable value changed for future references
-            }
-        });
+			if(newValue && firstTime.get()){
+				content.requestFocus(); // Delegate the focus to container
+				firstTime.setValue(false); // Variable value changed for future references
+
+			}
+		});
 		this.province.getItems().addAll(Configs.PROVINCES);
 		// on mouse clicked, we back to home
 		aimsImage.setOnMouseClicked(e -> {
@@ -77,9 +99,17 @@ public class DeliveryForm extends BaseForm implements Initializable {
 		});
 		//set rushtextfield visiblle
 		rushtext.setVisible(false);
+		rushlabel.setVisible(false);
+		shippingtimelabel.setVisible(false);
+		timetextfield.setVisible(false);
+
 		//event rushbutton
 		rushbutton.setOnAction(event -> {
-			rushtext.setVisible(rushbutton.isSelected());
+			boolean isSelected = rushbutton.isSelected();
+			rushlabel.setVisible(isSelected);
+			shippingtimelabel.setVisible(isSelected);
+			timetextfield.setVisible(isSelected);
+			rushtext.setVisible(isSelected);
 		});
 
 	}
