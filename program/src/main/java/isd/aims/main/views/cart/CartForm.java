@@ -30,11 +30,13 @@ public class CartForm extends BaseForm {
 
 	private static Logger LOGGER = Utils.getLogger(CartForm.class.getName());
 
-	@FXML
-	private ImageView aimsImage;
+//	@FXML
+//	private ImageView aimsImage;
 
 	@FXML
 	private Label pageTitle;
+	@FXML
+	private Button btnBack;
 
 	@FXML
 	VBox vboxCart;
@@ -54,16 +56,22 @@ public class CartForm extends BaseForm {
 	@FXML
 	private Button btnPlaceOrder;
 
+	@FXML
+	private Label subtotal;
+
+
+
 	public CartForm(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 
 		// fix relative image path caused by fxml
-		File file = new File("isd/aims/main/fxml/images/Logo.png");
-		Image im = new Image(file.toURI().toString());
-		aimsImage.setImage(im);
+//		File file = new File("isd/aims/main/fxml/images/Logo.png");
+//		Image im = new Image(file.toURI().toString());
+//		aimsImage.setImage(im);
 
 		// on mouse clicked, we back to home
-		aimsImage.setOnMouseClicked(e -> {
+//		aimsImage.setOnMouseClicked(e -> {
+		btnBack.setOnMouseClicked(e -> {
 			homeScreenHandler.show();
 		});
 
