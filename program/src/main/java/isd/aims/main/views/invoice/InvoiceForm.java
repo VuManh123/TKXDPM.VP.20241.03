@@ -34,6 +34,9 @@ public class InvoiceForm extends BaseForm {
 	private Label name;
 
 	@FXML
+	private Button btnBack;
+
+	@FXML
 	private Label phone;
 
 	@FXML
@@ -77,14 +80,20 @@ public class InvoiceForm extends BaseForm {
 			}
 
 		});
+
+		btnBack.setOnMouseClicked(e -> {
+			homeScreenHandler.show();
+		});
 	}
+
+
 
 	@SuppressWarnings("unchecked")
 	private void setInvoiceInfo(){
 		HashMap<String, String> deliveryInfo = invoice.getOrder().getDeliveryInfo();
 		name.setText(deliveryInfo.get("name"));
 		province.setText(deliveryInfo.get("province"));
-		instructions.setText(deliveryInfo.get("instructions"));
+		instructions.setText(deliveryInfo.get("rushtext"));
 		address.setText(deliveryInfo.get("address"));
 		subtotal.setText(Utils.getCurrencyFormat(invoice.getOrder().getAmount()));
 		shippingFees.setText(Utils.getCurrencyFormat(invoice.getOrder().getShippingFees()));
