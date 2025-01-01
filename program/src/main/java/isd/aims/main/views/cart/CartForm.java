@@ -142,7 +142,7 @@ public class CartForm extends BaseForm {
 		int subtotal = getBController().getCartSubtotal();
 		int vat = (int)((Configs.PERCENT_VAT/100)*subtotal);
 		int amount = subtotal + vat;
-		LOGGER.info("amount" + amount);
+		LOGGER.info("amount: " + amount);
 
 		// update subtotal and amount of Cart
 		labelSubtotal.setText(Utils.getCurrencyFormat(subtotal));

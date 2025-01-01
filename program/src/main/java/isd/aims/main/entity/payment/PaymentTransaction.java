@@ -17,8 +17,6 @@ public class PaymentTransaction {
 							  int amount, Date createdAt) {
 		super();
 		this.errorCode = errorCode;
-
-
 		this.transactionId = transactionId;
 		this.transactionContent = transactionContent;
 		this.amount = amount;
@@ -28,12 +26,13 @@ public class PaymentTransaction {
 	public void save(int orderId) throws SQLException {
 		this.orderID = orderId;
 		Statement stm = DBConnection.getConnection().createStatement();
-		String query = "INSERT INTO \"Transaction\" ( orderID, createAt, content) " +
-				"VALUES ( ?, ?, ?)";
+		String query = "INSERT INTO PAYMENT_TRANSACTION ( transactionID, date, transaction_content, orderID) " +
+				"VALUES ( ?, ?, ?, ?)";
 		try (PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query)) {
-			preparedStatement.setInt(1, 1);
-			preparedStatement.setDate(2, new java.sql.Date(createdAt.getTime()));
+			preparedStatement.setInt(1, Integer.parseInt(transactionId));
+			preparedStatement.setTimestamp(2, new java.sql.Timestamp(createdAt.getTime()));
 			preparedStatement.setString(3,transactionContent );
+			preparedStatement.setInt(4,1);
 
 			preparedStatement.executeUpdate();
 		} catch (Exception exception) {

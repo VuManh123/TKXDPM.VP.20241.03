@@ -74,4 +74,18 @@ public class Order {
         }
         return (int) (amount + (Configs.PERCENT_VAT/100)*amount);
     }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Order Details:").append("\n");
+        sb.append("ID: ").append(id == null ? "Not Assigned" : id).append("\n");
+        sb.append("Shipping Fees: ").append(shippingFees).append("\n");
+        sb.append("Delivery Info: ").append(deliveryInfo != null ? deliveryInfo : "Not Provided").append("\n");
+        sb.append("Order Media List:").append("\n");
+
+        for (Object om : lstOrderMedia) {
+            sb.append(om.toString()).append("\n");
+        }
+        return sb.toString();
+    }
 }

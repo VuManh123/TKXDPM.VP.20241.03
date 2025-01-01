@@ -3,6 +3,7 @@ package isd.aims.main.controller;
 import com.google.api.client.auth.oauth2.Credential;
 import isd.aims.main.InterbankSubsystem.IPayment;
 import isd.aims.main.InterbankSubsystem.vnPay.VnPaySubsystemController;
+import isd.aims.main.entity.order.Order;
 import isd.aims.main.entity.payment.PaymentTransaction;
 import isd.aims.main.entity.cart.Cart;
 import isd.aims.main.listener.TransactionResultListener;
@@ -42,6 +43,7 @@ public class PaymentController extends BaseController implements TransactionResu
 	public void onTransactionCompleted(PaymentTransaction transactionResult) {
 		if (transactionResult != null && transactionResult.isSuccess()) {
 			try {
+				System.out.println(Cart.getCart().getListMedia());
 				transactionResult.save(1); // Lưu giao dịch vào cơ sở dữ liệu nếu thành công
 				// Lấy thông tin từ giỏ hàng
 				Cart cart = Cart.getCart();
@@ -62,23 +64,23 @@ public class PaymentController extends BaseController implements TransactionResu
 				orderDetails.append("AIMS Team");
 				emptyCart(); // Làm trống giỏ hàng
 
-				// Khởi tạo EmailSenderService với thông tin tài khoản email
-				String senderEmail = "devvu203@gmail.com";
-				String senderPassword = "zzgy xrxc clro fxpx"; // Mật khẩu ứng dụng
-				Email emailSender = new Email(senderEmail, senderPassword);
-
-				// Gửi email
-				String recipientEmail = "vuducmanh10a@gmail.com"; // Email người nhận
-				String subject = "AIMS: Place Order Successfully!";
-				String body = orderDetails.toString();
-
-				try {
-					emailSender.sendEmail(recipientEmail, subject, body);
-					System.out.println("AIMS has sent to your email.");
-				} catch (MessagingException e) {
-					System.err.println("Failed to send email: " + e.getMessage());
-					return;
-				}
+//				// Khởi tạo EmailSenderService với thông tin tài khoản email
+//				String senderEmail = "devvu203@gmail.com";
+//				String senderPassword = "zzgy xrxc clro fxpx"; // Mật khẩu ứng dụng
+//				Email emailSender = new Email(senderEmail, senderPassword);
+//
+//				// Gửi email
+//				String recipientEmail = "vuducmanh10a@gmail.com"; // Email người nhận
+//				String subject = "AIMS: Place Order Successfully!";
+//				String body = orderDetails.toString();
+//
+//				try {
+//					emailSender.sendEmail(recipientEmail, subject, body);
+//					System.out.println("AIMS has sent to your email.");
+//				} catch (MessagingException e) {
+//					System.err.println("Failed to send email: " + e.getMessage());
+//					return;
+//				}
 
 				System.out.println("Lưu thành công");
 			} catch (SQLException e) {

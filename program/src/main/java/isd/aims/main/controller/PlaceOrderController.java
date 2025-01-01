@@ -47,6 +47,7 @@ public class PlaceOrderController extends BaseController{
                                                    cartMedia.getPrice());
             order.getlstOrderMedia().add(orderMedia);
         }
+        System.out.println(order);
         return order;
     }
 
