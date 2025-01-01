@@ -6,6 +6,7 @@ import isd.aims.main.entity.invoice.Invoice;
 import isd.aims.main.entity.order.Order;
 import isd.aims.main.entity.order.OrderMedia;
 import isd.aims.main.utils.Utils;
+import isd.aims.main.views.popup.PopupForm;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,19 +25,11 @@ public class PlaceOrderController extends BaseController{
      */
     private static Logger LOGGER = Utils.getLogger(PlaceOrderController.class.getName());
 
-    /**
-     * This method checks the avalibility of product when user click PlaceOrder button
-     * @throws SQLException
-     */
+
     public void placeOrder() throws SQLException{
         Cart.getCart().checkAvailabilityOfProduct();
     }
 
-    /**
-     * This method creates the new Order based on the Cart
-     * @return Order
-     * @throws SQLException
-     */
     @SuppressWarnings("unchecked")
     public Order createOrder() throws SQLException{
         Order order = new Order();
@@ -51,21 +44,10 @@ public class PlaceOrderController extends BaseController{
         return order;
     }
 
-    /**
-     * This method creates the new Invoice based on order
-     * @param order
-     * @return Invoice
-     */
     public Invoice createInvoice(Order order) {
         return new Invoice(order);
     }
 
-    /**
-     * This method takes responsibility for processing the shipping info from user
-     * @param info
-     * @throws InterruptedException
-     * @throws IOException
-     */
     @SuppressWarnings("rawtypes")
     public void processDeliveryInfo(HashMap info) throws InterruptedException, IOException{
         LOGGER.info("Process Delivery Info");
@@ -73,29 +55,143 @@ public class PlaceOrderController extends BaseController{
         validateDeliveryInfo(info);
     }
 
-    /**
-   * The method validates the info
-   * @param info
-   * @throws InterruptedException
-   * @throws IOException
-   */
-    public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException{
 
+    public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException {
+        if (info == null || info.isEmpty()) {
+            PopupForm.error("Delivery information cannot be null or empty.");
+            return;
+        }
+
+        String name = info.get("name");
+        String address = info.get("address");
+        String phoneNumber = info.get("phone");
+        String email = info.get("email");
+
+        PlaceOrderController controller = new PlaceOrderController();
+
+        if (name == null || name.trim().isEmpty() ||
+                address == null || address.trim().isEmpty() ||
+                phoneNumber == null || phoneNumber.trim().isEmpty() ||
+                email == null || email.trim().isEmpty()) {
+            PopupForm.error("Please fill all information!");
+            throw new IllegalArgumentException("Please fill all information");
+        }
+
+        // Validate name
+        if (!controller.validateName(name)) {
+            PopupForm.error("Invalid name: " + name);
+            throw new IllegalArgumentException("Invalid name: " + name);
+        }
+
+        // Validate address
+        if (!controller.validateAddress(address)) {
+            PopupForm.error("Invalid address: " + address);
+            throw new IllegalArgumentException("Invalid address: " + address);
+        }
+
+        // Validate phone number
+        if (!controller.validatePhoneNumber(phoneNumber)) {
+            PopupForm.error("Invalid phone number: " + phoneNumber);
+            throw new IllegalArgumentException("Invalid phone number: " + phoneNumber);
+        }
+
+        // Validate email
+        if (!validateEmail(email)) {
+            PopupForm.error("Invalid email: " + email);
+            throw new IllegalArgumentException("Invalid email: " + email);
+        }
     }
 
+    private boolean validateEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            return false;
+        }
+
+        // Basic regex for email validation
+        String emailRegex = "^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$";
+        return email.matches(emailRegex);
+    }
+
+
     public boolean validatePhoneNumber(String phoneNumber) {
-    	// TODO: your work
-    	return false;
+        if (phoneNumber == null) {
+            return false;
+        }
+        // Remove spaces and dashes to validate the core number
+        String normalizedPhone = phoneNumber.replaceAll("[ -]", "");
+
+        // Check if the normalized number starts with '0' and has exactly 10 digits
+        if (!normalizedPhone.matches("0\\d{9}")) {
+            return false;
+        }
+
+        // Ensure no space or dash at the start or end
+        if (phoneNumber.startsWith(" ") || phoneNumber.startsWith("-") ||
+                phoneNumber.endsWith(" ") || phoneNumber.endsWith("-")) {
+            return false;
+        }
+
+        // Ensure separators are not repeated (e.g., "0123--4567" is invalid)
+        if (phoneNumber.contains("--") || phoneNumber.contains("  ")) {
+            return false;
+        }
+
+        return true;
     }
 
     public boolean validateName(String name) {
-    	// TODO: your work
-    	return false;
+        if (name == null || name.trim().isEmpty()) {
+            return false;
+        }
+
+        // Check length (between 2 and 50 characters)
+        if (name.length() < 2 || name.length() > 30) {
+            return false;
+        }
+
+        // Ensure the name contains only letters and spaces
+        if (!name.matches("[a-zA-Z ]+")) {
+            return false;
+        }
+
+        // No consecutive spaces allowed
+        if (name.contains("  ")) {
+            return false;
+        }
+
+        return true;
     }
 
     public boolean validateAddress(String address) {
-    	// TODO: your work
-    	return false;
+        if (address == null || address.trim().isEmpty()) {
+            return false;
+        }
+
+        // Check length (between 5 and 100 characters)
+        if (address.length() < 5 || address.length() > 100) {
+            return false;
+        }
+
+        // Allow letters, digits, spaces, and certain special characters (, . - /)
+        if (!address.matches("[a-zA-Z0-9,\\.\\-/ ]+")) {
+            return false;
+        }
+
+        // No consecutive spaces allowed
+        if (address.contains("  ")) {
+            return false;
+        }
+
+        // Ensure no special characters or spaces at the start or end
+        if (address.startsWith(" ") || address.endsWith(" ") ||
+                address.startsWith(",") || address.endsWith(",") ||
+                address.startsWith(".") || address.endsWith(".") ||
+                address.startsWith("-") || address.endsWith("-") ||
+                address.startsWith("/") || address.endsWith("/")) {
+            return false;
+        }
+
+        return true;
     }
 
 
@@ -105,9 +201,7 @@ public class PlaceOrderController extends BaseController{
      * @return shippingFee
      */
     public int calculateShippingFee(Order order){
-        Random rand = new Random();
-        int fees = (int)( ( (rand.nextFloat()*10)/100 ) * order.getAmount() );
-        LOGGER.info("Order Amount: " + order.getAmount() + " -- Shipping Fees: " + fees);
-        return fees;
+        int quantity = order.getQuantityCart();
+        return 3 * quantity;
     }
 }
