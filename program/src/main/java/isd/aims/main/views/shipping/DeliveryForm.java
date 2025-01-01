@@ -33,14 +33,18 @@ public class DeliveryForm extends BaseForm implements Initializable {
 	private Label screenTitle;
 
 	@FXML
+	private Button btnBack;
+
+	@FXML
 	private Label rushlabel;
 	@FXML
 	private Label shippingtimelabel;
+
 	@FXML
 	private DatePicker timetextfield;
 
-	@FXML
-	private ImageView aimsImage;
+//	@FXML
+//	private ImageView aimsImage;
 
 	@FXML
 	private TextField name;
@@ -92,7 +96,7 @@ public class DeliveryForm extends BaseForm implements Initializable {
 		});
 		this.province.getItems().addAll(Configs.PROVINCES);
 		// on mouse clicked, we back to home
-		aimsImage.setOnMouseClicked(e -> {
+		btnBack.setOnMouseClicked(e -> {
 			homeScreenHandler.show();
 		});
 		//set rushtextfield visiblle
@@ -121,6 +125,7 @@ public class DeliveryForm extends BaseForm implements Initializable {
 		messages.put("phone", phone.getText());
 		messages.put("address", address.getText());
 		messages.put("province", province.getValue());
+		messages.put("rushtext", rushtext.getText());
 		try {
 			// process and validate delivery info
 			getBController().processDeliveryInfo(messages);
