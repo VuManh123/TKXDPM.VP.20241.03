@@ -3,6 +3,10 @@ package isd.aims.main.controller;
 import com.google.api.client.auth.oauth2.Credential;
 import isd.aims.main.InterbankSubsystem.IPayment;
 import isd.aims.main.InterbankSubsystem.vnPay.VnPaySubsystemController;
+import isd.aims.main.dao.OrderDAO;
+import isd.aims.main.entity.cart.CartMedia;
+import isd.aims.main.entity.media.Media;
+import isd.aims.main.entity.order.Order;
 import isd.aims.main.entity.payment.PaymentTransaction;
 import isd.aims.main.entity.cart.Cart;
 import isd.aims.main.listener.TransactionResultListener;
@@ -12,6 +16,8 @@ import javax.mail.MessagingException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -42,43 +48,30 @@ public class PaymentController extends BaseController implements TransactionResu
 	public void onTransactionCompleted(PaymentTransaction transactionResult) {
 		if (transactionResult != null && transactionResult.isSuccess()) {
 			try {
-				transactionResult.save(1); // Lưu giao dịch vào cơ sở dữ liệu nếu thành công
+				System.out.println(Cart.getCart().getListMedia());
+				System.out.println(Order.getInstance().getId());
+
+				// Lưu đơn hàng vào bảng Order, Transaction, Delivery và OrderMedia
+				OrderDAO.insertOrder(Order.getInstance().getId(), Order.getInstance().getAmount(), Order.getInstance().getShippingFees());
+
 				// Lấy thông tin từ giỏ hàng
-				Cart cart = Cart.getCart();
-				StringBuilder orderDetails = new StringBuilder();
-				orderDetails.append("Dear Customer,\n\n");
-				orderDetails.append("Thank you for your order. Here are the details of your transaction:\n\n");
-//				orderDetails.append("Transaction ID: ").append(transactionResult.getTransactionId()).append("\n");
-//				orderDetails.append("Transaction Date: ").append(transactionResult.getCreatedAt()).append("\n");
-//				orderDetails.append("Total Amount: ").append(transactionResult.getAmount()).append(" VND\n\n");
-//				orderDetails.append("Order Details:\n");
-//				cart.getItems().forEach(item -> {
-//					orderDetails.append("- Product: ").append(item.getProduct().getName()).append("\n");
-//					orderDetails.append("  Quantity: ").append(item.getQuantity()).append("\n");
-//					orderDetails.append("  Price: ").append(item.getProduct().getPrice()).append(" VND\n\n");
-//				});
-				orderDetails.append("Thank you for shopping with us!\n");
-				orderDetails.append("Best regards,\n");
-				orderDetails.append("AIMS Team");
-				emptyCart(); // Làm trống giỏ hàng
+				List<CartMedia> cartItems = Cart.getCart().getListMedia();
 
-				// Khởi tạo EmailSenderService với thông tin tài khoản email
-				String senderEmail = "devvu203@gmail.com";
-				String senderPassword = "zzgy xrxc clro fxpx"; // Mật khẩu ứng dụng
-				Email emailSender = new Email(senderEmail, senderPassword);
+				for (CartMedia cartMedia : cartItems) {
+					// Lấy thông tin media và quantity từ CartMedia
+					Media media = cartMedia.getMedia();
+					int mediaId = media.getId();
+					int quantity = cartMedia.getQuantity();
 
-				// Gửi email
-				String recipientEmail = "vuducmanh10a@gmail.com"; // Email người nhận
-				String subject = "AIMS: Place Order Successfully!";
-				String body = orderDetails.toString();
-
-				try {
-					emailSender.sendEmail(recipientEmail, subject, body);
-					System.out.println("AIMS has sent to your email.");
-				} catch (MessagingException e) {
-					System.err.println("Failed to send email: " + e.getMessage());
-					return;
+					// Gọi phương thức insertOrderMedia
+					OrderDAO.insertOrderMedia(Order.getInstance().getId(), mediaId, quantity);
 				}
+
+				transactionResult.save(Order.getInstance().getId());
+
+
+				emptyCart();
+				emptyOrder();
 
 				System.out.println("Lưu thành công");
 			} catch (SQLException e) {
@@ -92,4 +85,7 @@ public class PaymentController extends BaseController implements TransactionResu
 	public void emptyCart(){
         Cart.getCart().emptyCart();
     }
+	public void emptyOrder(){
+		Order.getInstance().emptyOrder();
+	}
 }

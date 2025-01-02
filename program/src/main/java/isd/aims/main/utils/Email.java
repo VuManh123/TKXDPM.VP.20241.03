@@ -39,4 +39,41 @@ public class Email {
 
         Transport.send(message);
     }
+
+//    public void sendOrder(int orderID, ) throws MessagingException {
+//        StringBuilder orderDetails = new StringBuilder();
+//        orderDetails.append("Dear Customer,\n\n");
+//
+//        orderDetails.append("Thank you for your order. Here are the details of your transaction:\n\n");
+//        orderDetails.append("Transaction ID: ").append().append("\n");
+//        orderDetails.append("Transaction Date: ").append().append("\n");
+//        orderDetails.append("Total Amount: ").append().append(" VND\n\n");
+//        orderDetails.append("Order Details:\n");
+//        cart.getItems().forEach(item -> {
+//            orderDetails.append("- Product: ").append().append("\n");
+//            orderDetails.append("  Quantity: ").append().append("\n");
+//            orderDetails.append("  Price: ").append().append(" VND\n\n");
+//        });
+//        orderDetails.append("Thank you for shopping with us!\n");
+//        orderDetails.append("Best regards,\n");
+//        orderDetails.append("AIMS Team");
+//
+//        // Khởi tạo EmailSenderService với thông tin tài khoản email
+//        String senderEmail = "devvu203@gmail.com";
+//        String senderPassword = "zzgy xrxc clro fxpx"; // Mật khẩu ứng dụng
+//        Email emailSender = new Email(senderEmail, senderPassword);
+//
+//        // Gửi email
+//        String recipientEmail = "vuducmanh10a@gmail.com"; // Email người nhận
+//        String subject = "AIMS: Place Order Successfully!";
+//        String body = orderDetails.toString();
+//
+//        try {
+//            emailSender.sendEmail(recipientEmail, subject, body);
+//            System.out.println("AIMS has sent to your email.");
+//        } catch (MessagingException e) {
+//            System.err.println("Failed to send email: " + e.getMessage());
+//            return;
+//        }
+//    }
 }

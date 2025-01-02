@@ -124,6 +124,7 @@ public class DeliveryForm extends BaseForm implements Initializable {
 		messages.put("name", name.getText());
 		messages.put("phone", phone.getText());
 		messages.put("address", address.getText());
+		messages.put("email", email.getText());
 		messages.put("province", province.getValue());
 		messages.put("rushtext", rushtext.getText());
 		try {

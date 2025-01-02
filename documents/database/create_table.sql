@@ -60,14 +60,15 @@ CREATE TABLE `ORDER` (
 );
 
 -- 5. Table: Delivery_information
-CREATE TABLE `DELIVERY_INFORMATION` (
+CREATE TABLE `DELIVERY` (
     `deliveryID` INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `province_city` VARCHAR(255),
     `delivery_address` VARCHAR(255),
     `recipient_name` VARCHAR(255),
     `email` VARCHAR(255),
     `phone_number` VARCHAR(20),
-    `support_for_rush_delivery` INT,
+	`delivery_time` DATETIME,
+    `delivery_instructions` VARCHAR(255),
     `orderID` INT NOT NULL,
     CONSTRAINT `fk_delivery_order` FOREIGN KEY (`orderID`) REFERENCES `ORDER` (`orderID`)
 );
@@ -81,20 +82,10 @@ CREATE TABLE `ORDER_MEDIA` (
     CONSTRAINT `fk_media_ordermedia` FOREIGN KEY (`mediaID`) REFERENCES `MEDIA` (`id`)
 );
 
--- 8. Table: Rush_delivery
-CREATE TABLE `RUSH_DELIVERY` (
-    `rush_shipping_fee` DECIMAL(10, 2),
-    `delivery_time` DATETIME,
-    `delivery_instructions` VARCHAR(255),
-    `orderID` INT NOT NULL,
-    FOREIGN KEY (`orderID`) REFERENCES `ORDER` (`orderID`)
-);
-
 -- 9. Table: Transaction
 CREATE TABLE `PAYMENT_TRANSACTION` (
     `transactionID` VARCHAR(255) NOT NULL PRIMARY KEY,
-    `time` TIME,
-    `date` DATE,
+    `date` datetime,
     `transaction_content` TEXT,
     `orderID` INT NOT NULL,
     CONSTRAINT `fk_order_transaction` FOREIGN KEY (`orderID`) REFERENCES `ORDER` (`orderID`)

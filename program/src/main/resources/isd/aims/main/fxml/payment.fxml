@@ -5,22 +5,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="768.0" prefWidth="1366.0"
-   style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21">
-   <children>
-      <Label fx:id="pageTitle" layoutX="70.0" layoutY="1.0" prefHeight="96.0" prefWidth="216.0"
-         text="Payment"
-         textAlignment="CENTER" textFill="#5091e6">
-         <font>
-            <Font name="Segoe UI Semibold" size="42.0" />
-         </font>
-      </Label>
-      <VBox fx:id="vBox" layoutX="44.0" layoutY="81.0" prefHeight="686.0" prefWidth="1276.0" />
-      <!--      <WebView fx:id="paymentView" layoutX="14.0" layoutY="78.0" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="676.0" prefWidth="1340.0" />-->
-   </children>
-</AnchorPane>
-
 <!-- <AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: white;"
    xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -106,3 +90,16 @@
          layoutY="258.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane> -->
+
+<AnchorPane prefHeight="620.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="pageTitle" layoutX="70.0" layoutY="1.0" prefHeight="96.0" prefWidth="216.0" text="Payment" textAlignment="CENTER" textFill="#5091e6">
+         <font>
+            <Font name="Segoe UI Semibold" size="42.0" />
+         </font>
+      </Label>
+      <VBox fx:id="vBox" layoutX="44.0" layoutY="81.0" prefHeight="620.0" prefWidth="1080.0" />
+      <!--      <WebView fx:id="paymentView" layoutX="14.0" layoutY="78.0" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="676.0" prefWidth="1340.0" />-->
+   </children>
+</AnchorPane>
