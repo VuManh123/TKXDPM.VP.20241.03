@@ -88,6 +88,17 @@ public class PaymentController extends BaseController implements TransactionResu
 				OrderDAO.insertDelivery(provinceCity, deliveryAddress, recipientName, email, phoneNumber,
 						deliveryTime, deliveryInstructions, Order.getInstance().getId());
 
+				// Khởi tạo đối tượng Email
+				String senderEmail = "devvu203@gmail.com";
+				String senderPassword = "zzgy xrxc clro fxpx"; // Mật khẩu ứng dụng Gmail
+				Email emailService = new Email(senderEmail, senderPassword);
+				// Gửi email
+				try {
+					emailService.sendEmailOrder(email, Order.getInstance().getId(), deliveryTime, Cart.getCart().calSubtotal(), cartItems);
+				} catch (MessagingException e) {
+					System.err.println("Failed to send email: " + e.getMessage());
+				}
+
 				emptyCart();
 				emptyOrder();
 
