@@ -3,8 +3,15 @@ package isd.aims.main.views.shipping;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import isd.aims.main.entity.cart.Cart;
+import isd.aims.main.entity.cart.CartMedia;
+import isd.aims.main.views.popup.PopupForm;
 import javafx.scene.control.RadioButton;
 
 import isd.aims.main.exception.InvalidDeliveryInfoException;
@@ -127,6 +134,49 @@ public class DeliveryForm extends BaseForm implements Initializable {
 		messages.put("email", email.getText());
 		messages.put("province", province.getValue());
 		messages.put("rushtext", rushtext.getText());
+		if (timetextfield.getValue() != null) {
+			messages.put("time", timetextfield.getValue().toString());
+		} else {
+			LocalDate currentDatePlus5 = LocalDate.now().plusDays(5);
+			messages.put("time", currentDatePlus5.toString());
+		}
+
+		// Kiểm tra nếu rushButton được chọn và tỉnh không phải Hà Nội
+		if (rushbutton.isSelected() && !province.getValue().equals("Hà Nội")) {
+			System.out.println("Không hỗ trợ đặt hàng nhanh ở thành phố của bạn");
+			PopupForm.error("Đặt hàng nhanh chỉ thực hiện ở nội thành Hà Nội");
+			return;
+		}
+
+		if (rushbutton.isSelected()) {
+			List<CartMedia> cartItems = Cart.getCart().getListMedia();
+
+			// Danh sách các sản phẩm không hỗ trợ rush order
+			List<String> unsupportedProducts = new ArrayList<>();
+
+			// Duyệt qua danh sách sản phẩm
+			for (CartMedia cartMedia : cartItems) {
+				// Kiểm tra nếu sản phẩm không hỗ trợ rush order
+				if (cartMedia.getSupportRushOrder() == 0) {
+					// Thêm tên sản phẩm vào danh sách không hỗ trợ
+					unsupportedProducts.add(cartMedia.getMedia().getTitle());
+				}
+			}
+
+			// Kiểm tra nếu có sản phẩm không hỗ trợ rush order
+			if (!unsupportedProducts.isEmpty()) {
+				// In danh sách sản phẩm không hỗ trợ
+				System.out.println("Sản phẩm không hỗ trợ rush order: " + String.join(", ", unsupportedProducts));
+
+				// Hiển thị thông báo lỗi
+				PopupForm.error("Các sản phẩm sau không hỗ trợ đặt hàng nhanh:\n" + String.join("\n", unsupportedProducts));
+
+				// Dừng xử lý tiếp
+				return;
+			}
+		}
+
+
 		try {
 			// process and validate delivery info
 			getBController().processDeliveryInfo(messages);
@@ -135,9 +185,16 @@ public class DeliveryForm extends BaseForm implements Initializable {
 		}
 
 		// calculate shipping fees
-		int shippingFees = getBController().calculateShippingFee(order);
+		int shippingFees;
+		if (rushbutton.isSelected()) {
+			shippingFees = getBController().calculateShippingFeeRushOrder(order);
+		} else {
+			shippingFees = getBController().calculateShippingFee(order);
+		}
+
 		order.setShippingFees(shippingFees);
 		order.setDeliveryInfo(messages);
+		System.out.println(Order.getInstance().getDeliveryInfo());
 
 		// create invoice screen
 		Invoice invoice = getBController().createInvoice(order);

@@ -8,11 +8,13 @@ public class OrderMedia {
     private Media media;
     private int price;
     private int quantity;
+    private int supportRushOrder;
 
-    public OrderMedia(Media media, int quantity, int price) {
+    public OrderMedia(Media media, int quantity, int price, int supportRushOrder) {
         this.media = media;
         this.quantity = quantity;
         this.price = price;
+        this.supportRushOrder = supportRushOrder;
     }
 
     @Override
@@ -21,6 +23,7 @@ public class OrderMedia {
                 "Media Title: " + media.getTitle() +
                 ", Quantity: " + quantity +
                 ", Price: " + price +
+                ", SupportRushOrder: " + supportRushOrder +
                 "}";
     }
 
