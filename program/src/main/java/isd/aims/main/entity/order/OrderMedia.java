@@ -14,16 +14,17 @@ public class OrderMedia {
         this.quantity = quantity;
         this.price = price;
     }
-    
+
     @Override
     public String toString() {
-        return "{" +
-            "  media='" + media + "'" +
-            ", quantity='" + quantity + "'" +
-            ", price='" + price + "'" +
-            "}";
+        return "OrderMedia {" +
+                "Media Title: " + media.getTitle() +
+                ", Quantity: " + quantity +
+                ", Price: " + price +
+                "}";
     }
-    
+
+
     public Media getMedia() {
         return this.media;
     }
