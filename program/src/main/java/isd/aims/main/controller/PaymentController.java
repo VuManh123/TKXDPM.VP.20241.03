@@ -16,6 +16,8 @@ import javax.mail.MessagingException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -50,6 +52,7 @@ public class PaymentController extends BaseController implements TransactionResu
 			try {
 				System.out.println(Cart.getCart().getListMedia());
 				System.out.println(Order.getInstance().getId());
+				System.out.println(Order.getInstance().getDeliveryInfo());
 
 				// Lưu đơn hàng vào bảng Order, Transaction, Delivery và OrderMedia
 				OrderDAO.insertOrder(Order.getInstance().getId(), Order.getInstance().getAmount(), Order.getInstance().getShippingFees());
@@ -69,6 +72,21 @@ public class PaymentController extends BaseController implements TransactionResu
 
 				transactionResult.save(Order.getInstance().getId());
 
+				Map<String, String> deliveryInfo = Order.getInstance().getDeliveryInfo();
+				String provinceCity = deliveryInfo.get("province");
+				String deliveryAddress = deliveryInfo.get("address");
+				String recipientName = deliveryInfo.get("name");
+				String email = deliveryInfo.get("email");
+				String phoneNumber = deliveryInfo.get("phone");
+				String deliveryInstructions = deliveryInfo.get("rushtext");
+				String timeString = deliveryInfo.get("time");
+
+				// Chuyển đổi `time` thành LocalDateTime
+				LocalDateTime deliveryTime = LocalDate.parse(timeString).atStartOfDay();
+
+				// Gọi phương thức insertDelivery
+				OrderDAO.insertDelivery(provinceCity, deliveryAddress, recipientName, email, phoneNumber,
+						deliveryTime, deliveryInstructions, Order.getInstance().getId());
 
 				emptyCart();
 				emptyOrder();

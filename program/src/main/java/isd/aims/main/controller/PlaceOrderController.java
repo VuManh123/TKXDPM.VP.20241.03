@@ -33,6 +33,7 @@ public class PlaceOrderController extends BaseController{
     @SuppressWarnings("unchecked")
     public Order createOrder() throws SQLException {
         Order order = Order.getInstance();
+        order.emptyOrder();
 
         // Generate a unique order ID
         int uniqueOrderID;
@@ -47,10 +48,11 @@ public class PlaceOrderController extends BaseController{
             CartMedia cartMedia = (CartMedia) object;
             OrderMedia orderMedia = new OrderMedia(cartMedia.getMedia(),
                     cartMedia.getQuantity(),
-                    cartMedia.getPrice());
+                    cartMedia.getPrice(),
+                    cartMedia.getSupportRushOrder());
             order.getlstOrderMedia().add(orderMedia);
         }
-        System.out.println(order);
+        System.out.println(Cart.getCart().getListMedia());
         return order;
     }
 

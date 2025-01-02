@@ -40,7 +40,7 @@ public class InvoiceForm extends BaseForm {
 	private Label phone;
 
 	@FXML
-	private Label province;
+	private Label email;
 
 	@FXML
 	private Label address;
@@ -92,9 +92,11 @@ public class InvoiceForm extends BaseForm {
 	private void setInvoiceInfo(){
 		HashMap<String, String> deliveryInfo = invoice.getOrder().getDeliveryInfo();
 		name.setText(deliveryInfo.get("name"));
-		province.setText(deliveryInfo.get("province"));
-		instructions.setText(deliveryInfo.get("rushtext"));
-		address.setText(deliveryInfo.get("address"));
+		phone.setText(deliveryInfo.get("phone"));
+		email.setText(deliveryInfo.get("email"));
+		instructions.setText(deliveryInfo.get("time"));
+		String fullAddress = deliveryInfo.get("address") + ", " + deliveryInfo.get("province");
+		address.setText(fullAddress);
 		subtotal.setText(Utils.getCurrencyFormat(invoice.getOrder().getAmount()));
 		shippingFees.setText(Utils.getCurrencyFormat(invoice.getOrder().getShippingFees()));
 		int amount = invoice.getOrder().getAmount() + invoice.getOrder().getShippingFees();

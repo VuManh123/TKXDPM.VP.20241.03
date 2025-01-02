@@ -27,12 +27,13 @@ public class Media {
     protected int quantity;
     protected String type;
     protected String imageURL;
+    protected int supportRushOrder;
 
     public Media() throws SQLException{
         stm = DBConnection.getConnection().createStatement();
     }
 
-    public Media(int id, String title, String category, int value, int price, int quantity, String type, String imageURL) {
+    public Media(int id, String title, String category, int value, int price, int quantity, String type, String imageURL, int supportRushOrder) {
         this.id = id;
         this.title = title;
         this.category = category;
@@ -41,6 +42,7 @@ public class Media {
         this.quantity = quantity;
         this.type = type;
         this.imageURL = imageURL;
+        this.supportRushOrder = supportRushOrder;
     }
 
     public Media (int id, String title, String category, int price, int quantity, String type) throws SQLException{
@@ -76,6 +78,7 @@ public class Media {
                 .setCategory(res.getString("category"))
                 .setMediaURL(res.getString("imageUrl"))
                 .setPrice(res.getInt("price"))
+                .setSupportRushOrder(res.getInt("support_for_rush_delivery"))
                 .setType(res.getString("type"));
         }
         return null;
@@ -93,6 +96,7 @@ public class Media {
                 .setCategory(res.getString("category"))
                 .setMediaURL(res.getString("imageUrl"))
                 .setPrice(res.getInt("price"))
+                .setSupportRushOrder(res.getInt("support_for_rush_delivery"))
                 .setType(res.getString("type"));
             medium.add(media);
         }
@@ -112,21 +116,12 @@ public class Media {
                     .setQuantity(res.getInt("quantity"))
                     .setCategory(res.getString("category"))
                     .setMediaURL(res.getString("imageUrl"))
+                    .setSupportRushOrder(res.getInt("support_for_rush_delivery"))
                     .setPrice(res.getInt("price"))
                     .setType(res.getString("type"));
             medium.add(media);
         }
         return medium;
-    }
-
-    public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
-        Statement stm = DBConnection.getConnection().createStatement();
-        if (value instanceof String){
-            value = "\"" + value + "\"";
-        }
-        stm.executeUpdate(" update " + tbname + " set" + " " 
-                          + field + "=" + value + " " 
-                          + "where id=" + id + ";");
     }
 
     // getter and setter 
@@ -169,9 +164,16 @@ public class Media {
     public String getImageURL(){
         return this.imageURL;
     }
+    public int getSupportRushOrder() {
+        return this.supportRushOrder;
+    }
 
     public Media setMediaURL(String url){
         this.imageURL = url;
+        return this;
+    }
+    public Media setSupportRushOrder(int supportRushOrder) {
+        this.supportRushOrder = supportRushOrder;
         return this;
     }
 
@@ -199,6 +201,7 @@ public class Media {
             ", quantity='" + quantity + "'" +
             ", type='" + type + "'" +
             ", imageURL='" + imageURL + "'" +
+            ", supportRushOrder='" + supportRushOrder + "'" +
             "}";
     }    
 

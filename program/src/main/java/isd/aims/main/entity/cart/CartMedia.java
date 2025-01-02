@@ -8,18 +8,15 @@ public class CartMedia {
     private Media media;
     private int quantity;
     private int price;
+    private int supportRushOrder;
 
-    public CartMedia(Media media, Cart cart, int quantity, int price) {
+    public CartMedia(Media media, Cart cart, int quantity, int price, int supportRushOrder) {
         this.media = media;
         this.quantity = quantity;
         this.price = price;
+        this.supportRushOrder = supportRushOrder;
     }
 
-    public CartMedia(Media media, int quantity, int price) {
-        this.media = media;
-        this.quantity = quantity;
-        this.price = price;
-    }
     
     public Media getMedia() {
         return this.media;
@@ -31,6 +28,12 @@ public class CartMedia {
 
     public int getQuantity() {
         return this.quantity;
+    }
+    public int getSupportRushOrder() {
+        return this.supportRushOrder;
+    }
+    public void setSupportRushOrder(int supportRushOrder) {
+        this.supportRushOrder = supportRushOrder;
     }
 
     public void setQuantity(int quantity) {
@@ -49,7 +52,7 @@ public class CartMedia {
     public String toString() {
         return "{" 
             + " media='" + media + "'" 
-            + ", quantity='" + quantity + "'" 
+            + ", quantity='" + quantity + "'" + ", supportRushOrder='" + supportRushOrder + "'"
             + "}";
     }
 
