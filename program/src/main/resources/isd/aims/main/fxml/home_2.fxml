@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
@@ -53,13 +52,18 @@
                   </Pane>
                   <Pane maxHeight="-Infinity" prefHeight="57.0" prefWidth="194.0">
                      <children>
-                        <SplitMenuButton fx:id="splitMenuBtnSearch" layoutX="-1.0" layoutY="15.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="106.0" text="Search" onAction="#handleSearch">
-                           <items>
-                           </items>
+                        <Button fx:id="btnSearch" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSearch" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #FFF; -fx-background-radius: 999; -fx-border-radius: 999;">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="12.0" />
                            </font>
-                        </SplitMenuButton>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/search_2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </Pane>
                </children>

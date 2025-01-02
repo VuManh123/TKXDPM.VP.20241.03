@@ -19,7 +19,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,9 +39,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 public class HomeForm extends BaseForm implements Initializable {
-
     public static Logger LOGGER = Utils.getLogger(HomeForm.class.getName());
-
     @FXML
     private Label numMediaInCart;
     @FXML
@@ -50,7 +47,7 @@ public class HomeForm extends BaseForm implements Initializable {
     @FXML
     private HBox hboxMedia;
     @FXML
-    private SplitMenuButton splitMenuBtnSearch;
+    private Button btnSearch;
     @FXML
     private Button btnCart;
     @FXML
