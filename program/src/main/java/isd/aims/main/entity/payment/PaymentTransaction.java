@@ -25,20 +25,27 @@ public class PaymentTransaction {
 
 	public void save(int orderId) throws SQLException {
 		this.orderID = orderId;
-		Statement stm = DBConnection.getConnection().createStatement();
-		String query = "INSERT INTO PAYMENT_TRANSACTION ( transactionID, date, transaction_content, orderID) " +
-				"VALUES ( ?, ?, ?, ?)";
-		try (PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query)) {
-			preparedStatement.setInt(1, Integer.parseInt(transactionId));
-			preparedStatement.setTimestamp(2, new java.sql.Timestamp(createdAt.getTime()));
-			preparedStatement.setString(3,transactionContent );
-			preparedStatement.setInt(4,1);
+		Connection connection = DBConnection.getConnection();
 
-			preparedStatement.executeUpdate();
-		} catch (Exception exception) {
-			exception.printStackTrace();
+		// Kiểm tra kết nối trước khi sử dụng
+		if (connection != null && !connection.isClosed()) {
+			String query = "INSERT INTO PAYMENT_TRANSACTION (transactionID, date, transaction_content, orderID) " +
+					"VALUES (?, ?, ?, ?)";
+			try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+				preparedStatement.setInt(1, Integer.parseInt(transactionId));
+				preparedStatement.setTimestamp(2, new java.sql.Timestamp(createdAt.getTime()));
+				preparedStatement.setString(3, transactionContent);
+				preparedStatement.setInt(4, orderId);
+
+				preparedStatement.executeUpdate();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		} else {
+			System.out.println("Connection is closed or unavailable.");
 		}
 	}
+
 
 	public int checkPaymentByOrderId(int orderId) throws SQLException {
 		int count = 0;

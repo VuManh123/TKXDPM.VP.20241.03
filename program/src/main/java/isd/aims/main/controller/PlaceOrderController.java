@@ -31,18 +31,30 @@ public class PlaceOrderController extends BaseController{
     }
 
     @SuppressWarnings("unchecked")
-    public Order createOrder() throws SQLException{
-        Order order = new Order();
+    public Order createOrder() throws SQLException {
+        Order order = Order.getInstance();
+
+        // Generate a unique order ID
+        int uniqueOrderID;
+        do {
+            uniqueOrderID = Order.generateOrderID();
+        } while (Order.isOrderIDExist(String.valueOf(uniqueOrderID)));
+
+        order.setId(uniqueOrderID);
+
+        // Copy items from cart to order
         for (Object object : Cart.getCart().getListMedia()) {
             CartMedia cartMedia = (CartMedia) object;
             OrderMedia orderMedia = new OrderMedia(cartMedia.getMedia(),
-                                                   cartMedia.getQuantity(),
-                                                   cartMedia.getPrice());
+                    cartMedia.getQuantity(),
+                    cartMedia.getPrice());
             order.getlstOrderMedia().add(orderMedia);
         }
         System.out.println(order);
         return order;
     }
+
+
 
     public Invoice createInvoice(Order order) {
         return new Invoice(order);
@@ -200,8 +212,36 @@ public class PlaceOrderController extends BaseController{
      * @param order
      * @return shippingFee
      */
-    public int calculateShippingFee(Order order){
+    public int calculateShippingFee(Order order) {
         int quantity = order.getQuantityCart();
-        return 3 * quantity;
+        int shippingFee = 0;
+
+        for (int i = 1; i <= quantity; i++) {
+            if (i == 1) {
+                shippingFee += 5; // Phí ship cho sản phẩm đầu tiên
+            } else if (i == 2) {
+                shippingFee += 4; // Phí ship cho sản phẩm thứ hai
+            } else {
+                shippingFee += 3; // Phí ship giảm dần cho các sản phẩm tiếp theo
+            }
+        }
+        return shippingFee;
     }
+
+    public int calculateShippingFeeRushOrder(Order order) {
+        int quantity = order.getQuantityCart();
+        int shippingFee = 0;
+
+        for (int i = 1; i <= quantity; i++) {
+            if (i == 1) {
+                shippingFee += 12; // Phí ship nhanh cho sản phẩm đầu tiên
+            } else if (i == 2) {
+                shippingFee += 10; // Phí ship nhanh cho sản phẩm thứ hai
+            } else {
+                shippingFee += 8; // Phí ship nhanh giảm dần cho các sản phẩm tiếp theo
+            }
+        }
+        return shippingFee;
+    }
+
 }
