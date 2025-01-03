@@ -46,11 +46,11 @@ public class HomeForm extends BaseForm implements Initializable {
     @FXML
     private Label numMediaInCart;
     @FXML
+    private Button btnSearch;
+    @FXML
     private ImageView aimsImage;
     @FXML
     private HBox hboxMedia;
-    @FXML
-    private SplitMenuButton splitMenuBtnSearch;
     @FXML
     private Button btnCart;
     @FXML

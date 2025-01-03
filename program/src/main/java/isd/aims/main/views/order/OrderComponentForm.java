@@ -25,12 +25,6 @@ public class OrderComponentForm extends FXMLForm {
     private HomeForm home;
     private OrderForm orderForm;
     private Stage stage;
-    @FXML
-    private void handleVBoxClick(MouseEvent event) {
-        LOGGER.info("User clicked to view detail of order: " + order.getId());
-        orderForm.showOrderDetails(this.order);
-    }
-
     public OrderComponentForm(String screenPath, Order order, HomeForm home, OrderForm orderForm) throws SQLException, IOException{
         super(screenPath);
         this.order = order;
