@@ -2,6 +2,8 @@ package isd.aims.main.views.order;
 
 import isd.aims.main.controller.MediaDetailController;
 import isd.aims.main.entity.media.Media;
+import isd.aims.main.entity.order.Order;
+import isd.aims.main.entity.order.OrderProduct;
 import isd.aims.main.utils.Configs;
 import isd.aims.main.utils.Utils;
 import isd.aims.main.views.FXMLForm;
@@ -35,43 +37,43 @@ public class OrderDetailMediaForm extends FXMLForm {
     protected Label orderMediaQuantity;
 
     private static Logger LOGGER = Utils.getLogger(MediaForm.class.getName());
-    private Media media;
+    private OrderProduct media;
     private HomeForm home;
     private Stage stage;
     @FXML
     private void handleVBoxClick(MouseEvent event) {
-        try {
-            LOGGER.info("User clicked to view detail of media: " + media.getTitle());
-            MediaDetailForm mediaDetailScreen = new MediaDetailForm(this.home.getStage(), Configs.MEDIA_DETAIL_PATH,media);
-            mediaDetailScreen.setBController(new MediaDetailController());
-            mediaDetailScreen.setHomeScreenHandler(this.home);
-            mediaDetailScreen.requestToViewDetailMedia(this.home);
-        } catch (IOException e1) {
-            LOGGER.severe("Error occurred while opening media detail page: " + e1.getMessage());
-            e1.printStackTrace();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            LOGGER.info("User clicked to view detail of media: " + media.getTitle());
+//            MediaDetailForm mediaDetailScreen = new MediaDetailForm(this.home.getStage(), Configs.MEDIA_DETAIL_PATH,media);
+//            mediaDetailScreen.setBController(new MediaDetailController());
+//            mediaDetailScreen.setHomeScreenHandler(this.home);
+//            mediaDetailScreen.requestToViewDetailMedia(this.home);
+//        } catch (IOException e1) {
+//            LOGGER.severe("Error occurred while opening media detail page: " + e1.getMessage());
+//            e1.printStackTrace();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
-    public OrderDetailMediaForm(String screenPath, Media media, HomeForm home) throws SQLException, IOException{
+    public OrderDetailMediaForm(String screenPath, OrderProduct product, HomeForm home) throws SQLException, IOException{
         super(screenPath);
-        this.media = media;
+        this.media = product;
         this.home = home;
         setMediaInfo();
     }
 
-    public Media getMedia(){
+    public OrderProduct getMedia(){
         return media;
     }
 
     private void setMediaInfo() throws SQLException {
-        File file = new File(Configs.IMAGE_PATH + media.getImageURL());
+        File file = new File(Configs.IMAGE_PATH + media.getImageUrl());
         Image image = new Image(file.toURI().toString());
         orderMediaImage.setFitHeight(80);
         orderMediaImage.setFitWidth(80);
         orderMediaImage.setImage(image);
-
+        orderMediaQuantity.setText(String.valueOf(media.getNumberOfProducts()));
         orderMediaTitle.setText(media.getTitle());
         orderMediaPrice.setText(Utils.getCurrencyFormat(media.getPrice()));
     }

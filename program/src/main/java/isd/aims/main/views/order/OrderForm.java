@@ -2,15 +2,20 @@ package isd.aims.main.views.order;
 
 import isd.aims.main.controller.OrderController;
 import isd.aims.main.controller.ViewCartController;
+import isd.aims.main.dao.InvoiceDAO;
 import isd.aims.main.entity.cart.Cart;
+import isd.aims.main.entity.invoice.InvoiceDetails;
 import isd.aims.main.entity.media.Media;
 import isd.aims.main.entity.order.Order;
+import isd.aims.main.entity.order.OrderProduct;
 import isd.aims.main.exception.ViewCartException;
+import isd.aims.main.utils.Email;
 import isd.aims.main.utils.Utils;
 import isd.aims.main.views.BaseForm;
 import isd.aims.main.views.cart.CartForm;
 import isd.aims.main.utils.Configs;
 import isd.aims.main.views.home.MediaForm;
+import isd.aims.main.views.popup.PopupForm;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
+import static java.lang.Integer.parseInt;
 
 public class OrderForm extends BaseForm {
     private static Logger LOGGER = Utils.getLogger(CartForm.class.getName());
@@ -75,6 +81,19 @@ public class OrderForm extends BaseForm {
     @FXML
     protected Label orderTotalPrice;
     private List orderItems;
+    private InvoiceDetails invoice;
+    private List<OrderProduct> products;
+    private String otp;
+    public void onChangeInputOrderID() {
+        if(mesOrderId.isVisible()) {
+            mesOrderId.setVisible(false);
+        }
+    }
+    public void onChangeInputEmail() {
+        if(mesEmail.isVisible()) {
+            mesEmail.setVisible(false);
+        }
+    }
 
     public OrderForm(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
@@ -100,31 +119,86 @@ public class OrderForm extends BaseForm {
         mesEmail.setVisible(false);
         mesVerifyCode.setVisible(false);
         btnSendRequest.setOnMouseClicked(e -> {
-            LOGGER.info("Send request check order");
             LOGGER.info("Check orderId: " + inputOrderId.getText());
             LOGGER.info("Check email: " + inputEmail.getText());
-            verifyArea.setVisible(true);
+            if (inputOrderId.getText().isEmpty()) {
+                mesEmail.setVisible(false);
+                mesOrderId.setText("Please enter orderID");
+                mesOrderId.setVisible(true);
+            } else if (inputEmail.getText().isEmpty()) {
+                mesOrderId.setVisible(false);
+                mesEmail.setText("Please enter orderID");
+                mesEmail.setVisible(true);
+            } else if (!validateEmail(inputEmail.getText())) {
+                mesEmail.setText("Email Invalid");
+                mesEmail.setVisible(true);
+            } else {
+                InvoiceDAO invoiceDAO = new InvoiceDAO();
+                invoice = invoiceDAO.getInvoiceDetails(parseInt(inputOrderId.getText()));
+                products = invoiceDAO.getOrderProducts(parseInt(inputOrderId.getText()));
+                System.out.println(products);
+                if (invoice == null) {
+                    try {
+                        PopupForm.error("OrderID isn't existed!");
+                        return;
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+                if (!invoice.getEmail().equals(inputEmail.getText())) {
+                    try {
+                        PopupForm.error("Email isn't match to email of order!");
+                        return;
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+                mesEmail.setVisible(false);
+                mesOrderId.setVisible(false);
+                verifyArea.setVisible(true);
+
+                String senderEmail = "devvu203@gmail.com";
+                String senderPassword = "zzgy xrxc clro fxpx";
+                Email email = new Email(senderEmail, senderPassword);
+                otp = email.generateOtp(6);
+                email.sendOtp(inputEmail.getText(), otp);
+            }
+
         });
         btnVerify.setOnMouseClicked(e -> {
             LOGGER.info("Send request verify");
             LOGGER.info("Check verify code: " + inputVerifyCode.getText());
+            showOrderDetails();
+            verifyArea.setVisible(false);
+            if (inputVerifyCode.getText().isEmpty()) {
+                mesVerifyCode.setText("Please fill verify code!");
+                mesVerifyCode.setVisible(true);
+            }
+            System.out.println(otp);
+            if (!inputVerifyCode.getText().equals(otp)) {
+                try {
+                    PopupForm.error("OTP Code isn't matched!");
+                    return;
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
             inputOrderId.setText("");
             inputEmail.setText("");
             inputVerifyCode.setText("");
-            verifyArea.setVisible(false);
-            // Can sua cai nay de lay san pham trong gio hang
-            List medium = null;
+
+            List medium;
             try {
                 medium = getBController().getAllMedia();
+                System.out.println(medium);
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
             this.orderItems = new ArrayList();
-            for (Object object : medium) {
-                Media media = (Media) object;
+            for (OrderProduct object : products) {
                 OrderDetailMediaForm m1 = null;
                 try {
-                    m1 = new OrderDetailMediaForm(Configs.ORDER_DETAIL_MEDIA_PATH, media, this.homeScreenHandler);
+                    m1 = new OrderDetailMediaForm(Configs.ORDER_DETAIL_MEDIA_PATH, object, this.homeScreenHandler);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 } catch (IOException ex) {
@@ -133,38 +207,12 @@ public class OrderForm extends BaseForm {
                 this.orderItems.add(m1);
             }
             addMediaOrder(this.orderItems);
+
         });
     }
 
-//    private List<Order> getMockOrders() {
-//        List<Order> orders = new ArrayList<>();
-//        orders.add(new Order(1, 5));
-//        orders.add(new Order(2, 7));
-//        orders.add(new Order(3, 10));
-//        return orders;
-//    }
     @Override
     public void show(){
-        try {
-//            // Tạo danh sách orders giả lập
-//            var orders = getMockOrders();
-//
-//            // Clear nội dung cũ
-//            listOrder.getChildren().clear();
-//
-//            // Duyệt qua từng order và thêm vào listOrder
-//            for (Order order : orders) {
-//                try {
-//                    OrderComponentForm orderComponent = new OrderComponentForm(Configs.ORDER_COMPONENT_PATH, order, homeScreenHandler, this);
-//                    listOrder.getChildren().add(orderComponent.getContent());
-//                } catch (IOException | SQLException e) {
-//                    LOGGER.warning("Error loading order component: " + e.getMessage());
-//                }
-//            }
-        } catch (Exception e) {
-            LOGGER.severe("Error fetching orders: " + e.getMessage());
-        }
-
         // Hiển thị số lượng media trong giỏ hàng
         int cartSize = Cart.getCart().getListMedia().size();
         if (cartSize == 0) {
@@ -190,15 +238,15 @@ public class OrderForm extends BaseForm {
         }
     }
 
-    public void showOrderDetails(Order order) {
+    public void showOrderDetails() {
         // Cập nhật các Label với thông tin chi tiết từ đơn hàng
-        orderId.setText(order.getId().toString());
-//        orderTime.setText(order.getOrderTime().toString());
-//        orderAddress.setText(order.getAddress());
-//        orderPhoneNumber.setText(order.getPhoneNumber());
-//        orderEmail.setText(order.getEmail());
-//        orderShippingFee.setText(order.getShippingFee().toString());
-//        orderTotalPrice.setText(order.getTotalPrice().toString());
+        orderId.setText(String.valueOf(invoice.getOrderID()));
+        orderTime.setText(invoice.getDate().toString());
+        orderAddress.setText(invoice.getAddress());
+        orderPhoneNumber.setText(invoice.getPhoneNumber());
+        orderEmail.setText(invoice.getEmail());
+        orderShippingFee.setText(String.valueOf(invoice.getShippingFee()));
+        orderTotalPrice.setText(String.valueOf(invoice.getTotal()));
     }
 
     public OrderController getBController(){
@@ -209,5 +257,15 @@ public class OrderForm extends BaseForm {
         setPreviousScreen(prevScreen);
         setScreenTitle("Order Screen");
         show();
+    }
+
+    private boolean validateEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            return false;
+        }
+
+        // Basic regex for email validation
+        String emailRegex = "^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$";
+        return email.matches(emailRegex);
     }
 }

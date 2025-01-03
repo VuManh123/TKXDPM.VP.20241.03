@@ -79,7 +79,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="inputOrderId">
+                              <TextField fx:id="inputOrderId" onKeyTyped="#onChangeInputOrderID">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -97,7 +97,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="inputEmail">
+                              <TextField fx:id="inputEmail" onKeyTyped="#onChangeInputEmail">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
